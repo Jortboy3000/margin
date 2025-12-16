@@ -1,0 +1,17 @@
+{
+    "url": "https://example.com/",
+    "exportedAt": "2023-10-27T10:00:00.000Z",
+    "notes": [
+        {
+            "id": "import-test-1",
+            "url": "https://example.com/",
+            "noteText": "Imported Observation Logic",
+            "noteType": "observation",
+            "selection": {
+                "text": "This domain is for use in illustrative examples"
+            },
+            "createdAt": 1698400000000,
+            "published": false
+        }
+    ]
+}

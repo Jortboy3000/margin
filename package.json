@@ -1,0 +1,15 @@
+{
+    "name": "margin-extension",
+    "version": "1.0.0",
+    "description": "Margin - The Web's Memory Layer",
+    "scripts": {
+        "test": "playwright test",
+        "lint": "eslint .",
+        "format": "prettier --write ."
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.40.0",
+        "eslint": "^9.16.0",
+        "prettier": "^3.4.2"
+    }
+}
