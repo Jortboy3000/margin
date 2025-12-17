@@ -4,15 +4,27 @@
 Margin is a Chrome extension that adds a **"truth layer"** to the web. It allows you to:
 
 ## Features
+ 
+### 📝 Contextual Capture
+Highlight text on any webpage and attach a note instantly.
+<img src="docs/images/capture.png" width="600" alt="Contextual Capture" />
 
-### 📝 Annotation
-- **Attach Notes**: Right-click partial text to attach observations.
-- **Evidence**: Link sources to your claims. Unsafe links are auto-blocked.
-- **Contextual Notes**: Add notes to any URL.
+### 🗂️ Structured Taxonomy
+Classify information as Observation, Claim, Correction, or Context.
+<img src="docs/images/taxonomy.png" width="400" alt="Taxonomy Dropdown" />
+
+### ⚠️ Semantic Drift Detection
+MARGIN detects if the underlying article has changed since you left your note. It ignores "noise" (ads/timestamps) but warns you if the headlines or meaning have shifted.
+<img src="docs/images/drift.png" width="400" alt="Drift Detection Warning" />
+
+### ☁️ Community Knowledge
+Share and view observations from other users on the same URL.
+<img src="docs/images/community.png" width="400" alt="Community Tab" />
+
+### Other Features
 - **Evidence Linking**: Attach evidence URLs to your claims.
-- **Semantic Fingerprinting**: Detects if the page content has changed significantly since you left your note.
 - **Local-First**: All data is stored locally in your browser (Chrome Storage).
-- **Import/Export**: Backup your notes to JSON or standardise your data.
+- **Import/Export**: Backup your notes to JSON.
 - **Resilient Anchoring**: Notes stay attached even if minor page edits occur.
 
 ## Installation (Developer Mode)
