@@ -1,7 +1,22 @@
 # MARGIN
 > **Monitoring Articles for Revision and Governance of Information Networks**
 
-Margin is a Chrome extension that adds a **"truth layer"** to the web. It allows you to:
+Margin adds a **"truth layer"** to the web. It allows you to attach persistent, evidence-backed notes to any webpage.
+
+## Why Margin?
+The web is ephemeral. Articles change, context shifts, and misinformation spreads. MARGIN solves this by allowing you to anchor truth to the page itself.
+
+**Who is this for?**
+*   **🕵️ Journalists & Fact-Checkers**: Annotate articles with contradictions or missing context directly on the source.
+*   **🎓 Researchers**: Maintain a persistent layer of observations across dynamic web sources.
+*   **👥 Communities**: Share a "knowledge layer" over disputed or complex content.
+
+## ⚡ How it works (in 60 seconds)
+1.  **Select**: Highlight any text on a webpage.
+2.  **Annotate**: Press `Cmd/Ctrl + Shift + .` or right-click to add a note.
+3.  **Classify**: Tag it as an **Observation**, **Claim**, **Correction**, or **Context**.
+4.  **Proof**: Attach an "Evidence URL" to back up your claim.
+5.  **Monitor**: If the page content changes later (drift), Margin warns you that your note's context might be invalid.
 
 ## Features
  
