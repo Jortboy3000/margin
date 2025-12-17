@@ -25,10 +25,6 @@ if (fs.existsSync(DATA_FILE)) {
     }
 }
 
-function saveDB() {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(DB, null, 2));
-}
-
 // Routes
 
 // GET /api/v1/observations?url=...
@@ -36,9 +32,9 @@ app.get('/api/v1/observations', (req, res) => {
     const url = req.query.url;
     if (!url) return res.status(400).json({ error: "Missing url param" });
 
-    // Normalize URL (basic)
+    // Normalize URL
     // In real app: remove tracking params, sort query keys, etc.
-    // For MVP: direct string match
+    // Current strategy: direct string match
 
     const pageData = DB.pages[url];
     if (!pageData) {
@@ -52,8 +48,8 @@ app.get('/api/v1/observations', (req, res) => {
 app.post('/api/v1/publish', (req, res) => {
     const { url, notes, token } = req.body;
 
-    // Auth Check (Simple Token)
-    // For MVP, allow any token that isn't empty, or specific "invite-code-X"
+    // Auth Check
+    // Current strategy: allow any non-empty token
     if (!token) return res.status(401).json({ error: "Unauthorized" });
 
     if (!url || !Array.isArray(notes)) {
@@ -110,8 +106,32 @@ app.post('/api/v1/publish', (req, res) => {
     res.json({ success: true, newClaims: newClaimsAdded, newObservations: observationsAdded });
 });
 
-// Sync Store (In-Memory for demo, replacing DB)
-const syncStore = {};
+// Sync Store (File-based persistence)
+const SYNC_FILE = path.join(__dirname, 'sync.json');
+let syncStore = {};
+
+// Load Sync DB
+if (fs.existsSync(SYNC_FILE)) {
+    try {
+        syncStore = JSON.parse(fs.readFileSync(SYNC_FILE, 'utf8'));
+    } catch (e) {
+        console.error("Failed to load Sync DB", e);
+    }
+}
+
+function saveSyncDB() {
+    // Async write to avoid blocking event loop
+    fs.writeFile(SYNC_FILE, JSON.stringify(syncStore, null, 2), (err) => {
+        if (err) console.error("Failed to save Sync DB async", err);
+    });
+}
+
+function saveDB() {
+    // Async write to avoid blocking event loop
+    fs.writeFile(DATA_FILE, JSON.stringify(DB, null, 2), (err) => {
+        if (err) console.error("Failed to save Main DB async", err);
+    });
+}
 
 // POST /api/v1/sync - Upload backup
 app.post('/api/v1/sync', (req, res) => {
@@ -125,6 +145,8 @@ app.post('/api/v1/sync', (req, res) => {
         data,
         timestamp: timestamp || Date.now()
     };
+
+    saveSyncDB(); // Persist to disk
 
     console.log(`[Sync] Backup received for user ${token.substring(0, 8)}...`);
     res.json({ success: true, timestamp: syncStore[token].timestamp });

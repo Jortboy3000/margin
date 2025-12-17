@@ -4,12 +4,12 @@
     global.PageUtils = {
         /**
          * Get visible text from the page.
-         * This is a simplified version for MVP.
+         * Implementation relies on document.body.innerText for robust visible text extraction.
          * @returns {string}
          */
         getVisibleText() {
             // Clone body to avoid modify live DOM if we were to clean it up heavily
-            // For MVP, innerText of body is a strong proxy for visible text
+            // Using innerText of body is a strong proxy for visible text
             // We might want to remove scripts/styles
             if (!document || !document.body) return "";
             return document.body.innerText.replace(/\s+/g, ' ').trim();

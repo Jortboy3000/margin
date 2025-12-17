@@ -82,7 +82,7 @@ async function waitForDependencies() {
 
         // Log missing dependencies
         const missing = requiredDeps.filter(dep => !window[dep]);
-        console.log(`Margin: Waiting for dependencies (attempt ${attempt + 1}): ${missing.join(', ')}`);
+        console.debug(`Margin: Waiting for dependencies (attempt ${attempt + 1}): ${missing.join(', ')}`);
 
         // Exponential backoff: 10ms, 20ms, 40ms, 80ms, 160ms, 320ms, 640ms...
         const waitTime = Math.min(10 * Math.pow(2, attempt), 500);
@@ -234,7 +234,7 @@ async function init() {
             await window.NetworkUtils.uploadSync(allData);
 
             // 3. Try Download (Merge?)
-            // For MVP Sync, we usually just "Push" or "Pull". True sync is hard.
+            // Current strategy: Push-only backup.
             // Let's do: Push Current -> If success, say "Synced!".
             // To Restore, we'd need a separate button.
             // OR: We check if server has newer timestamp?
@@ -295,56 +295,89 @@ async function init() {
     };
 }
 
-async function refreshNotes() {
-    const url = window.location.href;
-    currentNotes = await window.StorageUtils.getNotesForUrl(url);
+let refreshTimeout = null;
+function refreshNotes() {
+    if (refreshTimeout) clearTimeout(refreshTimeout);
+    return new Promise((resolve) => {
+        refreshTimeout = setTimeout(async () => {
+            const url = window.location.href;
+            currentNotes = await window.StorageUtils.getNotesForUrl(url);
 
-    // Schema Migration: Boolean -> Object
-    let migrationNeeded = false;
-    currentNotes = currentNotes.map(note => {
-        if (note.published === true) {
-            migrationNeeded = true;
-            return {
-                ...note,
-                published: {
-                    at: Date.now(),
-                    version: 1,
-                    status: 'active'
+            // Schema Migration: Boolean -> Object
+            let migrationNeeded = false;
+            currentNotes = currentNotes.map(note => {
+                if (note.published === true) {
+                    migrationNeeded = true;
+                    return {
+                        ...note,
+                        published: {
+                            at: Date.now(),
+                            version: 1,
+                            status: 'active'
+                        }
+                    };
                 }
-            };
-        }
-        return note;
+                return note;
+            });
+
+            if (migrationNeeded) {
+                console.log("Margin: Migrating schema for", url);
+                await chrome.storage.local.set({ [url]: currentNotes });
+            }
+            const currentFingerPrint = window.PageUtils.getSemanticFingerprint();
+
+            // Process notes for context warning
+            const processedNotes = currentNotes.map(note => {
+                const isHashDifferent = note.pageHash !== computedHash;
+
+                let semanticChanges = [];
+                let isSemanticMismatch = false;
+
+                if (note.semanticFingerprint && currentFingerPrint) {
+                    semanticChanges = window.PageUtils.compareFingerprints(note.semanticFingerprint, currentFingerPrint);
+                    isSemanticMismatch = semanticChanges.length > 0;
+                }
+
+                // Logic Refinement:
+                // Only flag "contextChanged" (generic warning) if:
+                // 1. Hash is different AND we have NO semantic fingerprint to verify (fallback)
+                // 2. OR, we have semantic changes (which are handled by semanticChanges list anyway)
+                // If Hash is different but Semantic Fingerprint is IDENTICAL, we treat it as "Page Noise" (ads, timestamps) and ignore it.
+
+                let showGenericWarning = false;
+                if (isHashDifferent) {
+                    if (note.semanticFingerprint && currentFingerPrint) {
+                        // We have semantic data. Trust it. 
+                        // If no semantic changes, it's just noise.
+                        if (isSemanticMismatch) {
+                            // We have specific changes, so we don't need the generic warning, 
+                            // the UI handles semanticChanges array.
+                            showGenericWarning = false;
+                        }
+                    } else {
+                        // No semantic data available (legacy note or failed parsing). 
+                        // Fallback to Hash.
+                        showGenericWarning = true;
+                    }
+                }
+
+                let anchorMissing = false;
+                if (note.selection && note.selection.text) {
+                    anchorMissing = !window.PageUtils.hasText(note.selection.text);
+                }
+
+                return {
+                    ...note,
+                    contextChanged: showGenericWarning,
+                    semanticChanges: semanticChanges,
+                    anchorMissing: anchorMissing
+                };
+            });
+
+            window.UIManager.renderNotesList(processedNotes);
+            resolve();
+        }, 100); // 100ms Debounce
     });
-
-    if (migrationNeeded) {
-        console.log("Margin: Migrating schema for", url);
-        await chrome.storage.local.set({ [url]: currentNotes });
-    }
-    const currentFingerPrint = window.PageUtils.getSemanticFingerprint();
-
-    // Process notes for context warning
-    const processedNotes = currentNotes.map(note => {
-        const isHashDifferent = note.pageHash !== computedHash;
-
-        let semanticChanges = [];
-        if (note.semanticFingerprint && currentFingerPrint) {
-            semanticChanges = window.PageUtils.compareFingerprints(note.semanticFingerprint, currentFingerPrint);
-        }
-
-        let anchorMissing = false;
-        if (note.selection && note.selection.text) {
-            anchorMissing = !window.PageUtils.hasText(note.selection.text);
-        }
-
-        return {
-            ...note,
-            contextChanged: isHashDifferent,
-            semanticChanges: semanticChanges,
-            anchorMissing: anchorMissing
-        };
-    });
-
-    window.UIManager.renderNotesList(processedNotes);
 }
 
 // Initialize
