@@ -1,0 +1,50 @@
+/* ============================================
+   CLEAN DOT CURSOR
+   ============================================ */
+
+/* Hide default cursor */
+body,
+a,
+button,
+.btn,
+.video-card {
+    cursor: none !important;
+}
+
+/* Simple Dot Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+        height 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+        background 0.3s ease,
+        opacity 0.2s ease;
+    will-change: left, top;
+}
+
+/* Hover State - grows with ring */
+.custom-cursor.cursor-hover {
+    width: 40px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 2px solid rgba(212, 175, 55, 0.8);
+}
+
+/* Add inner dot on hover */
+.custom-cursor.cursor-hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background: rgba(212, 175, 55, 1);
+    border-radius: 50%;
+}

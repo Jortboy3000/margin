@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Videos - 88to1 Productions</title>
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Music Videos - 88to1 Productions">
+    <meta property="og:description" content="Visual stories that move.">
+    <meta property="og:image" content="https://88to1productions.com.au/mercyofothers.jpg">
+    <meta property="og:url" content="https://88to1productions.com.au/music-videos.html">
+    <meta property="og:site_name" content="88to1 Productions">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Music Videos - 88to1 Productions">
+    <meta name="twitter:description" content="Visual stories that move.">
+    <meta name="twitter:image" content="https://88to1productions.com.au/mercyofothers.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Fixed Logo -->
+        <a href="/" id="main-logo" class="logo">88TO1</a>
+
+        <!-- Menu Overlay -->
+        <div id="menu-overlay">
+            <div class="menu-content">
+                <nav>
+                    <ul>
+                        <li><a href="film-and-television" class="menu-link">Film and Television</a></li>
+                        <li><a href="showreels-and-self-tapes" class="menu-link">Showreels</a></li>
+                        <li><a href="music-videos" class="menu-link">Music Videos</a></li>
+                        <li><a href="brand-advertising" class="menu-link">Brand Advertising</a></li>
+                        <li><a href="/#contact" class="menu-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/88to1productions" target="_blank"
+                    rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.youtube.com/@88to1Productions" target="_blank"
+                    rel="noopener noreferrer">YouTube</a>
+                <a href="https://www.facebook.com/88to1productions" target="_blank"
+                    rel="noopener noreferrer">Facebook</a>
+            </div>
+        </div>
+
+        <header style="position: fixed; width: 100%; top: 0; z-index: 100;">
+            <nav class="container"
+                style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem;">
+                <div class="header-left">
+                    <div class="locations">
+                        <span class="loc-visible">MELBOURNE</span>
+                        <span class="loc-hidden">SYDNEY</span>
+                        <span class="loc-hidden">PERTH</span>
+                    </div>
+                </div>
+                <div class="header-right" style="display: flex; align-items: center; gap: 2rem;">
+                    <button class="hamburger-btn" aria-label="Menu">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section style="padding-top: 12rem; padding-bottom: 3rem;">
+                <div class="container">
+                    <div style="max-width: 900px;">
+                        <p
+                            style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.6; margin-bottom: 1rem;">
+                            Music Videos</p>
+                        <h1
+                            style="font-size: clamp(3rem, 8vw, 6rem); line-height: 1; margin-bottom: 1.5rem; font-weight: 700;">
+                            Visual Stories<br>
+                            <span
+                                style="background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.5) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">That
+                                Move</span>
+                        </h1>
+                        <p
+                            style="font-size: clamp(1.1rem, 2vw, 1.3rem); opacity: 0.7; max-width: 600px; line-height: 1.6; font-weight: 300;">
+                            We create cinematic music videos that amplify your sound. From concept to final cut, we
+                            bring your vision to screen.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Video -->
+            <section style="padding: 4rem 0;">
+                <div class="container">
+                    <div class="featured-video-container" onclick="playVideo(this, 'GSmuLDWyb2o')">
+                        <img src="https://img.youtube.com/vi/GSmuLDWyb2o/maxresdefault.jpg" alt="Jarryd West - Rewind"
+                            class="featured-thumbnail" loading="eager">
+                        <div class="featured-overlay">
+                            <div class="featured-play">
+                                <svg width="100" height="100" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" stroke="rgba(255,255,255,0.2)" stroke-width="2"
+                                        fill="none" />
+                                    <circle cx="50" cy="50" r="48" stroke="rgba(255,255,255,0.9)" stroke-width="2"
+                                        fill="none" class="featured-circle" />
+                                    <polygon points="40,30 40,70 70,50" fill="white" />
+                                </svg>
+                            </div>
+                            <div class="featured-info">
+                                <span
+                                    style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.8;">Featured
+                                    Project</span>
+                                <h2 style="font-size: 2rem; margin: 0.5rem 0 0.25rem 0; font-weight: 600;">Rewind</h2>
+                                <p style="opacity: 0.7; margin: 0;">Jarryd West</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Grid -->
+            <section style="padding: 4rem 0 8rem 0;">
+                <div class="container">
+                    <h2
+                        style="font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3rem; opacity: 0.9;">
+                        Selected Works</h2>
+
+                    <div class="music-video-grid">
+                        <!-- Jarryd West - Brothers -->
+                        <div class="video-card fade-in-up" onclick="playVideo(this, '6oUgR96ENUs')">
+                            <div class="video-container">
+                                <img src="https://img.youtube.com/vi/6oUgR96ENUs/maxresdefault.jpg"
+                                    alt="Jarryd West - Brothers" class="video-thumbnail" loading="lazy">
+                                <div class="video-overlay">
+                                    <div class="play-button">
+                                        <svg width="70" height="70" viewBox="0 0 70 70">
+                                            <circle cx="35" cy="35" r="33" stroke="rgba(255,255,255,0.3)"
+                                                stroke-width="2" fill="none" />
+                                            <circle cx="35" cy="35" r="33" stroke="rgba(255,255,255,0.8)"
+                                                stroke-width="2" fill="none" class="play-circle" />
+                                            <polygon points="28,22 28,48 48,35" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Brothers</h3>
+                                <p class="video-artist">Jarryd West</p>
+                            </div>
+                        </div>
+
+                        <!-- Jarryd West - Write it in the Sand -->
+                        <div class="video-card fade-in-up" style="animation-delay: 0.1s;"
+                            onclick="playVideo(this, '-Zv_UOh66Wo')">
+                            <div class="video-container">
+                                <img src="https://img.youtube.com/vi/-Zv_UOh66Wo/maxresdefault.jpg"
+                                    alt="Jarryd West - Write it in the Sand" class="video-thumbnail" loading="lazy">
+                                <div class="video-overlay">
+                                    <div class="play-button">
+                                        <svg width="70" height="70" viewBox="0 0 70 70">
+                                            <circle cx="35" cy="35" r="33" stroke="rgba(255,255,255,0.3)"
+                                                stroke-width="2" fill="none" />
+                                            <circle cx="35" cy="35" r="33" stroke="rgba(255,255,255,0.8)"
+                                                stroke-width="2" fill="none" class="play-circle" />
+                                            <polygon points="28,22 28,48 48,35" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Write it in the Sand</h3>
+                                <p class="video-artist">Jarryd West</p>
+                            </div>
+                        </div>
+
+                        <!-- Jarryd West - Baby Steps -->
+                        <div class="video-card fade-in-up" style="animation-delay: 0.2s;"
+                            onclick="playVideo(this, '8YXhY7ld3Os')">
+                            <div class="video-container">
+                                <img src="https://img.youtube.com/vi/8YXhY7ld3Os/maxresdefault.jpg"
+                                    alt="Jarryd West - Baby Steps" class="video-thumbnail" loading="lazy">
+                                <div class="video-overlay">
+                                    <div class="play-button">
+                                        <svg width="70" height="70" viewBox="0 0 70 70">
+                                            <circle cx="35" cy="35" r="33" stroke="rgba(255,255,255,0.3)"
+                                                stroke-width="2" fill="none" />
+                                            <circle cx="35" cy="35" r="33" stroke="rgba(255,255,255,0.8)"
+                                                stroke-width="2" fill="none" class="play-circle" />
+                                            <polygon points="28,22 28,48 48,35" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Baby Steps</h3>
+                                <p class="video-artist">Jarryd West</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact CTA -->
+            <section
+                style="padding: 6rem 0; background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.02) 100%); border-top: 1px solid rgba(255,255,255,0.05);">
+                <div class="container" style="text-align: center;">
+                    <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; font-weight: 600;">Ready to
+                        Create?</h2>
+                    <p
+                        style="margin-bottom: 3rem; opacity: 0.7; font-size: 1.1rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        Let's bring your music to life with stunning visuals.
+                    </p>
+                    <a href="mailto:admin@88to1productions.com.au" class="btn"
+                        style="padding: 1rem 3rem; font-size: 1rem;">Start a
+                        Project</a>
+                </div>
+            </section>
+
+            <style>
+                /* Featured Video Styling */
+                .featured-video-container {
+                    position: relative;
+                    width: 100%;
+                    aspect-ratio: 21/9;
+                    background: #000;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    cursor: pointer;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+                    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+
+                .featured-thumbnail {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+
+                .featured-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.4s ease;
+                }
+
+                .featured-play {
+                    margin-bottom: 2rem;
+                    transform: scale(1);
+                    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+                    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
+                }
+
+                .featured-circle {
+                    stroke-dasharray: 300;
+                    stroke-dashoffset: 300;
+                    transition: stroke-dashoffset 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+
+                .featured-info {
+                    text-align: center;
+                    opacity: 0.9;
+                    transition: all 0.4s ease;
+                }
+
+                .featured-video-container:hover {
+                    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+                    transform: translateY(-4px);
+                }
+
+                .featured-video-container:hover .featured-thumbnail {
+                    transform: scale(1.05);
+                }
+
+                .featured-video-container:hover .featured-overlay {
+                    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 100%);
+                }
+
+                .featured-video-container:hover .featured-play {
+                    transform: scale(1.15);
+                }
+
+                .featured-video-container:hover .featured-circle {
+                    stroke-dashoffset: 0;
+                }
+
+                .featured-video-container:hover .featured-info {
+                    opacity: 1;
+                }
+
+                /* Grid Styling */
+                .music-video-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                    gap: 2.5rem;
+                }
+
+                /* Video Card Styling */
+                .video-container {
+                    position: relative;
+                    width: 100%;
+                    padding-bottom: 56.25%;
+                    background: #000;
+                    border-radius: 6px;
+                    overflow: hidden;
+                    cursor: pointer;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+
+                .video-thumbnail {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+
+                .video-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 1;
+                    transition: all 0.4s ease;
+                }
+
+                .play-button {
+                    transform: scale(1);
+                    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+                }
+
+                .play-button svg {
+                    display: block;
+                }
+
+                .play-circle {
+                    stroke-dasharray: 210;
+                    stroke-dashoffset: 210;
+                    transition: stroke-dashoffset 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+
+                .video-card {
+                    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+
+                .video-card:hover {
+                    transform: translateY(-8px);
+                }
+
+                .video-card:hover .video-container {
+                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+                }
+
+                .video-card:hover .video-thumbnail {
+                    transform: scale(1.05);
+                }
+
+                .video-card:hover .video-overlay {
+                    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
+                }
+
+                .video-card:hover .play-button {
+                    transform: scale(1.15);
+                }
+
+                .video-card:hover .play-circle {
+                    stroke-dashoffset: 0;
+                }
+
+                /* Video Info */
+                .video-info {
+                    margin-top: 1rem;
+                    text-align: left;
+                }
+
+                .video-title {
+                    font-family: var(--font-heading);
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    margin-bottom: 0.25rem;
+                    color: #fff;
+                }
+
+                .video-artist {
+                    font-family: var(--font-body);
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    opacity: 0.6;
+                    margin: 0;
+                }
+
+                /* Embedded iframe styling */
+                .video-container iframe,
+                .featured-video-container iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+
+                @media (max-width: 768px) {
+                    .featured-video-container {
+                        aspect-ratio: 16/9;
+                    }
+
+                    .music-video-grid {
+                        grid-template-columns: 1fr;
+                        gap: 2rem;
+                    }
+                }
+            </style>
+
+            <script>
+                function playVideo(element, videoId) {
+                    const container = element.classList.contains('featured-video-container')
+                        ? element
+                        : element.querySelector('.video-container');
+
+                    // Create iframe
+                    const iframe = document.createElement('iframe');
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+                    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    iframe.allowFullscreen = true;
+
+                    // Replace content with iframe
+                    container.innerHTML = '';
+                    container.appendChild(iframe);
+
+                    // Remove click handler
+                    element.onclick = null;
+                    element.style.cursor = 'default';
+                }
+            </script>
+        </main>
+
+        <footer
+            style="padding: 3rem 0; border-top: 1px solid #222; text-align: center; font-size: 0.9rem; opacity: 0.6;">
+            <div class="container">
+                <p>&copy; 2024 88to1 Productions. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Custom Cursor -->
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+
+        <!-- Lenis Smooth Scroll -->
+        <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+        <script type="module" src="/src/main.js"></script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+# Bunny.net Configuration
+
+# Add this to your .gitignore to keep API keys secret
+src/bunny-config.js
+
+# Keep the template file in git
+!src/bunny-config.template.js

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>88to1 Productions Brand Guidelines</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --text-color: #f5f5f5;
+            --accent-color: #d4af37;
+            --secondary-bg: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Print Page Setup */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            position: relative;
+            page-break-after: always;
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Syne', sans-serif;
+            color: var(--text-color);
+            text-transform: uppercase;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .cover-logo {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            border: none;
+        }
+
+        .cover-title {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-bottom: 4rem;
+            max-width: 60%;
+        }
+
+        .cover-meta {
+            position: absolute;
+            bottom: 20mm;
+            left: 20mm;
+            font-size: 0.9rem;
+            opacity: 0.5;
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            width: calc(100% - 40mm);
+        }
+
+        /* Content Pages */
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            color: var(--accent-color);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            color: #cccccc;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--secondary-bg);
+            margin: 2rem 0;
+            display: block;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent-color);
+            margin: 2rem 0;
+            padding-left: 2rem;
+            font-size: 1.4rem;
+            font-family: 'Syne', sans-serif;
+            color: var(--accent-color);
+            line-height: 1.4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid var(--secondary-bg);
+        }
+
+        th {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .swatch {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            margin-right: 12px;
+            border: 1px solid #333;
+            border-radius: 4px;
+        }
+
+        /* Screen Preview Adjustments */
+        @media screen {
+            body {
+                background-color: #111;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+            }
+
+            .page {
+                margin-bottom: 2rem;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PAGE 1: COVER -->
+    <div class="page cover-page">
+        <img src="file:///C:/Users/User/.gemini/antigravity/brain/e8e684a0-3d6c-466d-9049-5cdc4c805ba2/brand_typography_corrected_1766273091447.png"
+            alt="Logo" class="cover-logo" style="border:none;">
+
+        <div class="cover-title">BRAND<br>IDENTITY<br>GUIDELINES</div>
+        <div class="cover-subtitle">"Narrative-led production for screen and brand."</div>
+
+        <div class="cover-meta">
+            <strong>VERSION 1.0</strong> // DECEMBER 2025<br>
+            88TO1 PRODUCTIONS
+        </div>
+    </div>
+
+    <!-- PAGE 2: MANIFESTO & PHILOSOPHY -->
+    <div class="page">
+        <h2>1. The Manifesto</h2>
+        <blockquote>
+            "We reject the generic, the flat, and the noisy. Every frame should carry weight."
+        </blockquote>
+
+        <h3>Core Philosophy</h3>
+        <p>88to1 Productions exists in the space where cinema meets commerce. We believe that a brand's story deserves
+            the same cinematic lens as a feature film.</p>
+
+        <h3>Pillars</h3>
+        <ul>
+            <li><strong>Cinematic:</strong> Visuals are rich, deep, and intentional.</li>
+            <li><strong>Silence:</strong> We use negative space to create tension and focus.</li>
+            <li><strong>Motion:</strong> Everything feels alive, fluid, and reactive.</li>
+        </ul>
+
+        <h3>Tone of Voice</h3>
+        <table>
+            <tr>
+                <th>Do This</th>
+                <th>Not This</th>
+            </tr>
+            <tr>
+                <td>"Impossible to ignore."</td>
+                <td>"High visibility services."</td>
+            </tr>
+            <tr>
+                <td>"Start a project."</td>
+                <td>"Click here to contact us."</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- PAGE 3: VISUAL IDENTITY -->
+    <div class="page">
+        <h2>2. Visual Identity</h2>
+
+        <h3>2.1 Color System</h3>
+        <p>Our palette is defined by high contrast and deep voids. We avoid flat greys in favor of <strong>Cinema
+                Black</strong>.</p>
+
+        <img src="file:///C:/Users/User/.gemini/antigravity/brain/e8e684a0-3d6c-466d-9049-5cdc4c805ba2/brand_palette_corrected_1766272990702.png"
+            alt="Color Palette">
+
+        <table>
+            <tr>
+                <th>Token</th>
+                <th>Hex</th>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <td>p-black</td>
+                <td><span class="swatch" style="background:#050505"></span>#050505</td>
+                <td>The Infinite Void</td>
+            </tr>
+            <tr>
+                <td>p-white</td>
+                <td><span class="swatch" style="background:#f5f5f5"></span>#f5f5f5</td>
+                <td>Primary Ink</td>
+            </tr>
+            <tr>
+                <td>s-charcoal</td>
+                <td><span class="swatch" style="background:#1a1a1a"></span>#1a1a1a</td>
+                <td>Surface / Cards</td>
+            </tr>
+            <tr>
+                <td>a-gold</td>
+                <td><span class="swatch" style="background:#d4a017"></span>#d4a017</td>
+                <td>Focus / Accent</td>
+            </tr>
+        </table>
+
+        <h3>2.2 Typography</h3>
+        <p><strong>Primary: Syne (Bold 700)</strong><br>
+            Usage: Headlines. Tracking: -0.02em (Tight).<br>
+            <em>Character: Art-deco, geometric, expanded.</em>
+        </p>
+
+        <p><strong>Secondary: Inter (Regular 400)</strong><br>
+            Usage: Body Copy. Tracking: Normal.<br>
+            <em>Character: Clean, invisible, utilitarian.</em>
+        </p>
+    </div>
+
+    <!-- PAGE 4: ART DIRECTION & UI -->
+    <div class="page">
+        <h2>3. Art Direction</h2>
+        <p>Imagery is Chiaroscuro—high contrast, deep shadows, specific focal points.</p>
+
+        <img src="mofothers.jpg" alt="Key Art Example" style="max-height: 400px; object-fit: cover; width: 100%;">
+
+        <h2>4. UI & Interaction</h2>
+        <p>The interface is a "HUD" (Heads Up Display) over the content. Glassmorphism meets Cinema.</p>
+
+        <img src="file:///C:/Users/User/.gemini/antigravity/brain/e8e684a0-3d6c-466d-9049-5cdc4c805ba2/brand_ui_components_1766272853808.png"
+            alt="UI Components">
+
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333; font-size: 0.8rem; opacity: 0.5;">
+            88TO1 PRODUCTIONS // CONFIDENTIAL
+        </div>
+    </div>
+
+</body>
+
+</html>

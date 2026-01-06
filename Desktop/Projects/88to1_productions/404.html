@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Scene Missing | 88to1 Productions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body style="height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    <div id="app">
+        <!-- Background Noise -->
+        <div class="film-grain"></div>
+
+        <div class="container" style="text-align: center; position: relative; z-index: 2;">
+            <h1
+                style="font-size: clamp(8rem, 20vw, 20rem); line-height: 0.8; opacity: 0.1; font-weight: 700; margin-bottom: -2rem;">
+                404</h1>
+            <h2 style="font-size: clamp(2rem, 5vw, 4rem); text-transform: uppercase; margin-bottom: 1.5rem;">Scene
+                Missing</h2>
+            <p
+                style="font-size: 1.2rem; opacity: 0.7; max-width: 500px; margin: 0 auto 3rem; font-family: var(--font-body);">
+                The page you're looking for has been cut from the final edit.
+            </p>
+
+            <a href="/" class="btn" style="padding: 1rem 3rem;">Back to set</a>
+        </div>
+
+        <!-- Custom Cursor -->
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+
+    </div>
+
+    <script type="module">
+        // Minimal cursor logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hide default cursor
+        document.body.style.cursor = 'none';
+    </script>
+</body>
+
+</html>

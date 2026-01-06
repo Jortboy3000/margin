@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Showreels - 88to1 Productions</title>
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Showreels - 88to1 Productions">
+    <meta property="og:description" content="Cinema-quality scenes for actors who want to be taken seriously.">
+    <meta property="og:image" content="https://88to1productions.com.au/mercyofothers.jpg">
+    <meta property="og:url" content="https://88to1productions.com.au/showreels-and-self-tapes.html">
+    <meta property="og:site_name" content="88to1 Productions">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Showreels - 88to1 Productions">
+    <meta name="twitter:description" content="Cinema-quality scenes for actors who want to be taken seriously.">
+    <meta name="twitter:image" content="https://88to1productions.com.au/mercyofothers.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Fixed Logo -->
+        <a href="/" id="main-logo" class="logo">88TO1</a>
+
+        <!-- Menu Overlay -->
+        <div id="menu-overlay">
+            <div class="menu-content">
+                <nav>
+                    <ul>
+                        <li><a href="film-and-television" class="menu-link">Film and Television</a></li>
+                        <li><a href="showreels-and-self-tapes" class="menu-link">Showreels</a></li>
+                        <li><a href="music-videos" class="menu-link">Music Videos</a></li>
+                        <li><a href="brand-advertising" class="menu-link">Brand Advertising</a></li>
+                        <li><a href="/#contact" class="menu-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/88to1productions" target="_blank"
+                    rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.youtube.com/@88to1Productions" target="_blank"
+                    rel="noopener noreferrer">YouTube</a>
+                <a href="https://www.facebook.com/88to1productions" target="_blank"
+                    rel="noopener noreferrer">Facebook</a>
+            </div>
+        </div>
+
+        <header style="position: fixed; width: 100%; top: 0; z-index: 100;">
+            <nav class="container"
+                style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem;">
+                <div class="header-left">
+                    <div class="locations">
+                        <span class="loc-visible">MELBOURNE</span>
+                        <span class="loc-hidden">SYDNEY</span>
+                        <span class="loc-hidden">PERTH</span>
+                    </div>
+                </div>
+                <div class="header-right" style="display: flex; align-items: center; gap: 2rem;">
+                    <button class="hamburger-btn" aria-label="Menu">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section style="padding-top: 15rem; padding-bottom: 4rem;">
+                <div class="container">
+                    <h1 style="font-size: 3rem; text-transform: uppercase; margin-bottom: 2rem;">Showreel Scenes</h1>
+
+                    <!-- Video Player -->
+                    <div class="media-container video-trigger"
+                        style="margin-bottom: 3rem; aspect-ratio: 21/9; border: 1px solid rgba(255,255,255,0.1); position: relative; cursor: pointer;">
+                        <video id="hero-showreel" data-hls
+                            data-src="https://vz-e3f7e942-92b.b-cdn.net/835115b7-b1c4-4aca-8a07-b0543e725d43/playlist.m3u8"
+                            data-fallback="https://vz-e3f7e942-92b.b-cdn.net/835115b7-b1c4-4aca-8a07-b0543e725d43/play_720p.mp4"
+                            controls playsinline preload="metadata" class="film-video"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        </video>
+
+                        <!-- Custom Play Overlay -->
+                        <div class="video-overlay"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+                            <div class="play-icon"
+                                style="width: 80px; height: 80px; background: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 2rem; box-shadow: 0 0 30px rgba(212,175,55,0.4); padding-left: 5px;">
+                                ▶
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const videoContainer = document.querySelector('.video-trigger');
+                            const video = document.getElementById('hero-showreel');
+                            const overlay = videoContainer.querySelector('.video-overlay');
+                            let isThumbnailMode = true;
+
+                            // Robust Thumbnail Setting
+                            const setThumbnail = () => {
+                                // Only seek if we haven't started playing meaningfully yet
+                                if (isThumbnailMode && video.readyState >= 1) {
+                                    try {
+                                        // Check if we can seek to 3s
+                                        if (video.duration >= 3) {
+                                            video.currentTime = 3;
+                                        }
+                                    } catch (e) {
+                                        console.warn("Seek to thumbnail failed, ignoring:", e);
+                                    }
+                                }
+                            };
+
+                            // Listen for metadata/canplay to attempt setting thumbnail
+                            video.addEventListener('loadedmetadata', setThumbnail);
+                            video.addEventListener('canplay', setThumbnail);
+
+                            // Handle User Interaction
+                            videoContainer.addEventListener('click', async () => {
+                                if (video.paused) {
+                                    // If we are in "thumbnail mode" (showing the 3s frame), reset to start
+                                    if (isThumbnailMode) {
+                                        video.currentTime = 0;
+                                        isThumbnailMode = false;
+                                    }
+
+                                    try {
+                                        await video.play();
+                                        video.controls = true;
+                                        overlay.style.opacity = '0';
+                                        overlay.style.pointerEvents = 'none';
+                                    } catch (err) {
+                                        console.error("Playback failed:", err);
+                                        // Ensure controls are visible so user can try manual play
+                                        video.controls = true;
+                                    }
+                                } else {
+                                    video.pause();
+                                    overlay.style.opacity = '1';
+                                    overlay.style.pointerEvents = 'auto';
+                                    video.controls = false;
+                                }
+                            });
+
+                            // Ensure overlay handles click if it bubbles, but container click is safer
+                        });
+                    </script>
+
+                    <h2
+                        style="font-size: 1.5rem; text-transform: uppercase; opacity: 0.9; margin-bottom: 2rem; font-weight: 400; max-width: 800px;">
+                        Cinema-quality scenes for actors who want to be taken seriously.</h2>
+
+                    <div style="max-width: 800px;">
+                        <p
+                            style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 4rem; font-family: var(--font-body); opacity: 0.8;">
+                            Don't explain your versatility. Show it. Ideal for filling gaps in your reel or breaking
+                            typecast.
+                        </p>
+
+                        <h3 style="font-size: 1.5rem; margin-bottom: 2rem; text-transform: uppercase;">What you get</h3>
+
+                        <ul class="stagger-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <li
+                                style="border-left: 2px solid var(--accent-color); padding-left: 1.5rem; transition: transform 0.3s ease;">
+                                <strong
+                                    style="display: block; font-size: 1.1rem; margin-bottom: 0.2rem; color: #fff; text-transform: uppercase;">Script
+                                    & Material</strong>
+                                <span style="font-size: 0.95rem; opacity: 0.7;">We provide the scene if you need
+                                    it.</span>
+                            </li>
+                            <li
+                                style="border-left: 2px solid var(--accent-color); padding-left: 1.5rem; transition: transform 0.3s ease;">
+                                <strong
+                                    style="display: block; font-size: 1.1rem; margin-bottom: 0.2rem; color: #fff; text-transform: uppercase;">Consultation</strong>
+                                <span style="font-size: 0.95rem; opacity: 0.7;">We prep before we shoot.</span>
+                            </li>
+                            <li
+                                style="border-left: 2px solid var(--accent-color); padding-left: 1.5rem; transition: transform 0.3s ease;">
+                                <strong
+                                    style="display: block; font-size: 1.1rem; margin-bottom: 0.2rem; color: #fff; text-transform: uppercase;">Professional
+                                    Production</strong>
+                                <span style="font-size: 0.95rem; opacity: 0.7;">Cinema cameras, lighting, and
+                                    direction.</span>
+                            </li>
+                            <li
+                                style="border-left: 2px solid var(--accent-color); padding-left: 1.5rem; transition: transform 0.3s ease;">
+                                <strong
+                                    style="display: block; font-size: 1.1rem; margin-bottom: 0.2rem; color: #fff; text-transform: uppercase;">Post-Production</strong>
+                                <span style="font-size: 0.95rem; opacity: 0.7;">Edited, graded, and mixed. Ready to
+                                    upload.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            // Extra animation for list items and form elements
+                            const animatedElements = document.querySelectorAll('.stagger-list li, .form-group, .package-card');
+
+                            const observerOptions = {
+                                root: null,
+                                threshold: 0.1,
+                                rootMargin: "0px"
+                            };
+
+                            const observer = new IntersectionObserver((entries) => {
+                                entries.forEach(entry => {
+                                    if (entry.isIntersecting) {
+                                        entry.target.style.opacity = '1';
+                                        entry.target.style.transform = 'translateY(0)';
+                                        observer.unobserve(entry.target);
+                                    }
+                                });
+                            }, observerOptions);
+
+                            animatedElements.forEach((el, index) => {
+                                el.style.opacity = '0';
+                                el.style.transform = 'translateY(20px)';
+                                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                                el.style.transitionDelay = `${(index % 5) * 100}ms`;
+                                observer.observe(el);
+                            });
+
+                            // List Item Hover Interactions
+                            document.querySelectorAll('.stagger-list li').forEach(li => {
+                                li.addEventListener('mouseenter', () => {
+                                    li.style.transform = 'translateX(10px) translateY(0)';
+                                    li.querySelector('strong').style.color = '#fff';
+                                });
+                                li.addEventListener('mouseleave', () => {
+                                    li.style.transform = 'translateX(0) translateY(0)';
+                                });
+                            });
+                        });
+                    </script>
+
+                    <!-- Packages Section -->
+                    <div style="margin-top: 8rem;">
+                        <h2
+                            style="font-size: 2rem; text-transform: uppercase; margin-bottom: 1rem; text-align: center;">
+                            Packages</h2>
+                        <p
+                            style="text-align: center; font-size: 1.1rem; opacity: 0.7; margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; font-family: var(--font-body);">
+                            High-impact scenes for every career stage.
+                        </p>
+
+                        <div class="packages-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: flex-start;">
+
+                            <!-- Package 1 -->
+                            <article class="package-card"
+                                style="position: relative; background: rgba(255,255,255,0.02); padding: 3rem 2rem; border: 1px solid rgba(212,175,55,0.2); text-align: center; display: flex; flex-direction: column; align-items: center; overflow: hidden; transition: all 0.4s ease;">
+                                <div
+                                    style="position: absolute; top: -1rem; right: -0.5rem; font-family: var(--font-heading); font-size: 8rem; color: rgba(255,255,255,0.03); font-weight: 700; pointer-events: none; z-index: 0;">
+                                    01</div>
+                                <div style="position: relative; z-index: 1;">
+                                    <div
+                                        style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem; border: 2px solid rgba(255,255,255,0.1);">
+                                        <img src="1.avif" alt="Package 1"
+                                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                                    </div>
+                                    <h3
+                                        style="font-size: 1.8rem; text-transform: uppercase; margin-bottom: 0.5rem; color: #fff;">
+                                        Package 1</h3>
+                                    <p
+                                        style="font-size: 1rem; opacity: 0.8; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                        1 x Showreel Scene</p>
+                                    <div
+                                        style="font-size: 3.5rem; color: #fff; font-weight: 700; margin-bottom: 2rem; font-family: var(--font-heading);">
+                                        $449</div>
+                                    <div
+                                        style="width: 50px; height: 1px; background: rgba(255,255,255,0.3); margin-bottom: 2rem;">
+                                    </div>
+                                    <p style="font-size: 0.95rem; opacity: 0.6; line-height: 1.6; max-width: 250px;">
+                                        Shooting, Editing, Sound Mix, Grade</p>
+                                </div>
+                            </article>
+
+                            <!-- Package 2 (Highlighted) -->
+                            <article class="package-card featured"
+                                style="position: relative; background: rgba(255,255,255,0.05); padding: 3.5rem 2rem; border: 2px solid var(--accent-color); box-shadow: 0 0 30px rgba(212,175,55,0.15); text-align: center; display: flex; flex-direction: column; align-items: center; overflow: hidden; z-index: 10;">
+                                <!-- Recommended Badge -->
+                                <div
+                                    style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: #000; padding: 0.4rem 1.5rem; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                                    Recommended
+                                </div>
+
+                                <div
+                                    style="position: absolute; top: -1rem; right: -0.5rem; font-family: var(--font-heading); font-size: 8rem; color: rgba(255,255,255,0.05); font-weight: 700; pointer-events: none; z-index: 0;">
+                                    02</div>
+                                <div style="position: relative; z-index: 1;">
+                                    <div
+                                        style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem; border: 2px solid var(--accent-color);">
+                                        <img src="2.avif" alt="Package 2"
+                                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                                    </div>
+                                    <h3
+                                        style="font-size: 2rem; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--accent-color);">
+                                        Package 2</h3>
+                                    <p
+                                        style="font-size: 1.1rem; opacity: 1; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.05em; color: #fff;">
+                                        2 x Showreel Scenes</p>
+                                    <div
+                                        style="font-size: 4rem; color: var(--accent-color); font-weight: 700; margin-bottom: 2rem; font-family: var(--font-heading); text-shadow: 0 0 20px rgba(212,175,55,0.3);">
+                                        $799</div>
+                                    <div
+                                        style="width: 50px; height: 2px; background: var(--accent-color); margin-bottom: 2rem;">
+                                    </div>
+                                    <p
+                                        style="font-size: 1rem; opacity: 0.9; line-height: 1.6; max-width: 250px; color: #fff;">
+                                        Shooting, Editing, Sound Mix, Grade</p>
+                                </div>
+                            </article>
+
+                            <!-- Package 3 -->
+                            <article class="package-card"
+                                style="position: relative; background: rgba(255,255,255,0.02); padding: 3rem 2rem; border: 1px solid rgba(212,175,55,0.2); text-align: center; display: flex; flex-direction: column; align-items: center; overflow: hidden; transition: all 0.4s ease;">
+                                <div
+                                    style="position: absolute; top: -1rem; right: -0.5rem; font-family: var(--font-heading); font-size: 8rem; color: rgba(255,255,255,0.03); font-weight: 700; pointer-events: none; z-index: 0;">
+                                    03</div>
+                                <div style="position: relative; z-index: 1;">
+                                    <div
+                                        style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem; border: 2px solid rgba(255,255,255,0.1);">
+                                        <img src="3.avif" alt="Package 3"
+                                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                                    </div>
+                                    <h3
+                                        style="font-size: 1.8rem; text-transform: uppercase; margin-bottom: 0.5rem; color: #fff;">
+                                        Package 3</h3>
+                                    <p
+                                        style="font-size: 1rem; opacity: 0.8; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                        3 x Showreel Scenes</p>
+                                    <div
+                                        style="font-size: 3.5rem; color: #fff; font-weight: 700; margin-bottom: 2rem; font-family: var(--font-heading);">
+                                        $1249</div>
+                                    <div
+                                        style="width: 50px; height: 1px; background: rgba(255,255,255,0.3); margin-bottom: 2rem;">
+                                    </div>
+                                    <p style="font-size: 0.95rem; opacity: 0.6; line-height: 1.6; max-width: 250px;">
+                                        Shooting, Editing, Sound Mix, Grade</p>
+                                </div>
+                            </article>
+
+                        </div>
+
+                        <!-- Exit Ramp -->
+                        <div style="text-align: center; margin-top: 4rem;">
+                            <p style="opacity: 0.7; font-size: 1rem; margin-bottom: 1rem;">Not sure which fits?</p>
+                            <a href="mailto:admin@88to1productions.com.au"
+                                style="color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem; border-bottom: 1px solid var(--accent-color); padding-bottom: 0.2rem;">Let's
+                                talk</a>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div
+                            style="text-align: center; margin-top: 6rem; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1);">
+                            <p
+                                style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.6; margin-bottom: 1.5rem;">
+                                We Accept All Forms of Payment</p>
+                            <div
+                                style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                                <span
+                                    style="font-size: 1rem; opacity: 0.8; padding: 0.5rem 1.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">Google
+                                    Pay</span>
+                                <span
+                                    style="font-size: 1rem; opacity: 0.8; padding: 0.5rem 1.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">Apple
+                                    Pay</span>
+                                <span
+                                    style="font-size: 1rem; opacity: 0.8; padding: 0.5rem 1.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">Afterpay</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Booking Form -->
+                    <div style="margin-top: 8rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        <h2
+                            style="font-size: 2rem; text-transform: uppercase; margin-bottom: 1rem; text-align: center;">
+                            Request a Booking</h2>
+                        <p style="text-align: center; opacity: 0.7; margin-bottom: 3rem; font-size: 1.1rem;">Tell us
+                            what you’re trying to achieve. We’ll guide the rest.</p>
+
+                        <form style="display: flex; flex-direction: column; gap: 2rem;">
+
+                            <!-- Name & Email Row -->
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <label for="name"
+                                        style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">Name</label>
+                                    <input type="text" id="name" name="name" required
+                                        style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 1rem 0; color: #fff; font-family: var(--font-body); font-size: 1rem; outline: none; transition: border-color 0.3s ease;">
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <label for="email"
+                                        style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">Email</label>
+                                    <input type="email" id="email" name="email" required
+                                        style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 1rem 0; color: #fff; font-family: var(--font-body); font-size: 1rem; outline: none; transition: border-color 0.3s ease;">
+                                </div>
+                            </div>
+
+                            <!-- Phone & Shoot Dates Row -->
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <label for="phone"
+                                        style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">Phone</label>
+                                    <input type="tel" id="phone" name="phone"
+                                        style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 1rem 0; color: #fff; font-family: var(--font-body); font-size: 1rem; outline: none; transition: border-color 0.3s ease;">
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <label for="dates"
+                                        style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">Preferred
+                                        Shoot Dates</label>
+                                    <input type="text" id="dates" name="dates" placeholder="e.g. Late January"
+                                        style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 1rem 0; color: #fff; font-family: var(--font-body); font-size: 1rem; outline: none; transition: border-color 0.3s ease;">
+                                </div>
+                            </div>
+
+                            <!-- Package Selection -->
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="package"
+                                    style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">Interested
+                                    Package</label>
+                                <select id="package" name="package"
+                                    style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 1rem 0; color: #fff; font-family: var(--font-body); font-size: 1rem; outline: none; cursor: pointer; appearance: none; border-radius: 0;">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="package1" style="background: #000;">Package 1 ($449)</option>
+                                    <option value="package2" style="background: #000;">Package 2 ($799)</option>
+                                    <option value="package3" style="background: #000;">Package 3 ($1249)</option>
+                                    <option value="custom" style="background: #000;">Custom / Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Custom Details -->
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="message"
+                                    style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">Custom
+                                    / Other Details</label>
+                                <textarea id="message" name="message" rows="4"
+                                    style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; color: #fff; font-family: var(--font-body); font-size: 1rem; outline: none; resize: vertical; margin-top: 0.5rem;"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div style="text-align: center; margin-top: 2rem;">
+                                <button type="submit" class="btn"
+                                    style="padding: 1rem 4rem; font-size: 1rem; cursor: pointer;">Send Request</button>
+                            </div>
+
+                        </form>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const form = document.querySelector('form');
+                                form.addEventListener('submit', (e) => {
+                                    e.preventDefault();
+
+                                    const formData = new FormData(form);
+                                    const name = formData.get('name');
+                                    const email = formData.get('email');
+                                    const phone = formData.get('phone');
+                                    const dates = formData.get('dates');
+                                    const package = formData.get('package');
+                                    const message = formData.get('message');
+
+                                    const subject = `Booking Request: ${name}`;
+                                    const body = `Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Preferred Dates: ${dates}
+Package: ${package}
+
+Details:
+${message}`;
+
+                                    const mailtoLink = `mailto:admin@88to1productions.com.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                                    // Open mail client
+                                    window.location.href = mailtoLink;
+
+                                    // Visual feedback
+                                    const btn = form.querySelector('button');
+                                    const originalText = btn.innerText;
+                                    btn.innerText = 'Opening Email...';
+                                    btn.style.opacity = '0.7';
+
+                                    setTimeout(() => {
+                                        btn.innerText = originalText;
+                                        btn.style.opacity = '1';
+                                        form.reset();
+                                    }, 2000);
+                                });
+                            });
+                        </script>
+                    </div>
+
+
+        </main>
+
+        <footer
+            style="padding: 3rem 0; border-top: 1px solid #222; text-align: center; font-size: 0.9rem; opacity: 0.6;">
+            <div class="container">
+                <p>&copy; 2024 88to1 Productions. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Custom Cursor -->
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+
+        <!-- Lenis Smooth Scroll -->
+        <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+        <script type="module" src="/src/main.js"></script>
+    </div>
+</body>
+
+</html>
