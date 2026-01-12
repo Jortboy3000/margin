@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Demo - Savra</title>
+    <link rel="icon" type="image/png" href="/assets/s.png" />
+    <link rel="stylesheet" href="/src/signup.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="split-container">
+        <!-- Left Side: Brand & Feature -->
+        <div class="brand-panel">
+            <div class="brand-logo">
+                <a href="index.html" class="home-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+
+            <div class="brand-content">
+                <h1>Get control of your numbers.</h1>
+                <p class="brand-subtext">
+                    Create your Savra account, connect your bank, and see profit, cashflow, and leaks in real time.
+                    Setup takes minutes.
+                </p>
+
+                <ul class="feature-list">
+                    <li>
+                        <i data-lucide="check-circle-2" class="check-icon"></i>
+                        <span>See profit per job instantly</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2" class="check-icon"></i>
+                        <span>Catch missing invoices and cost blowouts</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2" class="check-icon"></i>
+                        <span>Forecast cashflow before it gets tight</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="form-panel">
+            <div class="form-wrapper">
+                <h2>Book a personalised demo</h2>
+
+                <form class="signup-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="Jane Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" placeholder="jane@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+61 400 000 000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" placeholder="Acme Civil" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">Industry</label>
+                        <input type="text" id="industry"
+                            placeholder="e.g., Construction, Manufacturing, Professional Services" required>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Book Demo</button>
+
+                    <div class="form-footer">
+                        <i data-lucide="lock" size="14"></i>
+                        <span>We'll never share your details.</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message Overlay -->
+    <div id="success-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="text-align: center; color: white; padding: 40px;">
+            <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+            <h2 style="font-size: 2rem; margin-bottom: 16px; font-weight: 700;">Thanks for booking!</h2>
+            <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.8);">We'll be in touch shortly to schedule your
+                demo.</p>
+            <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); margin-top: 20px;">Redirecting you back...</p>
+        </div>
+    </div>
+    <script>
+        lucide.createIcons();
+
+        // Slack Webhook Integration
+        const SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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';
+
+        document.querySelector('.signup-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const company = document.getElementById('company').value;
+            const industry = document.getElementById('industry').value;
+
+            // Prepare Slack message
+            const slackMessage = {
+                text: "🚀 New Demo Booking Request!",
+                blocks: [
+                    {
+                        type: "header",
+                        text: {
+                            type: "plain_text",
+                            text: "🚀 New Demo Booking",
+                            emoji: true
+                        }
+                    },
+                    {
+                        type: "section",
+                        fields: [
+                            {
+                                type: "mrkdwn",
+                                text: `*Name:*\n${fullname}`
+                            },
+                            {
+                                type: "mrkdwn",
+                                text: `*Company:*\n${company}`
+                            },
+                            {
+                                type: "mrkdwn",
+                                text: `*Industry:*\n${industry}`
+                            },
+                            {
+                                type: "mrkdwn",
+                                text: `*Email:*\n${email}`
+                            },
+                            {
+                                type: "mrkdwn",
+                                text: `*Phone:*\n${phone || 'Not provided'}`
+                            }
+                        ]
+                    },
+                    {
+                        type: "context",
+                        elements: [
+                            {
+                                type: "mrkdwn",
+                                text: `Submitted at: ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney' })}`
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            try {
+                // Send to Slack (no Content-Type header to avoid CORS preflight)
+                const response = await fetch(SLACK_WEBHOOK_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(slackMessage)
+                });
+
+                if (response.ok) {
+                    // Show success overlay
+                    const overlay = document.getElementById('success-overlay');
+                    overlay.style.display = 'flex';
+
+                    // Redirect after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 3000);
+                } else {
+                    alert('Something went wrong. Please try again or contact us directly.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again or contact us directly.');
+            }
+        });
+    </script>
+</body>
+
+</html>

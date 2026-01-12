@@ -1,0 +1,426 @@
+/* Business Health Journey - Visual Flow */
+
+.business-journey {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px 120px;
+    position: relative;
+}
+
+.journey-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.journey-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 8px 0;
+}
+
+.journey-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    opacity: 0.7;
+}
+
+/* Stage 1: Data Inputs */
+.stage-inputs {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stage-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.input-pills {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.input-pill {
+    background: rgba(141, 144, 246, 0.1);
+    border: 1px solid rgba(141, 144, 246, 0.3);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: var(--text);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(141, 144, 246, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(141, 144, 246, 0.4);
+    }
+}
+
+/* Flow Lines (SVG) */
+.journey-flow {
+    position: absolute;
+    top: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.flow-path {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0;
+}
+
+.main-flow {
+    stroke: rgba(141, 144, 246, 0.6);
+    filter: drop-shadow(0 0 8px rgba(141, 144, 246, 0.4));
+    animation: drawPath 1s ease-out 0.5s forwards,
+        flowParticles 2s linear 1.5s infinite;
+}
+
+.risk-flow {
+    stroke: rgba(239, 68, 68, 0.6);
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.4));
+    animation: drawPath 0.8s ease-out 2s forwards,
+        flowParticles 2s linear 2.8s infinite;
+}
+
+.opp-flow {
+    stroke: rgba(16, 185, 129, 0.6);
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+    animation: drawPath 0.8s ease-out 2s forwards,
+        flowParticles 2s linear 2.8s infinite;
+}
+
+@keyframes drawPath {
+    from {
+        stroke-dashoffset: 1000;
+        opacity: 0;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes flowParticles {
+    to {
+        stroke-dashoffset: -100;
+    }
+}
+
+/* Stage 2: Core Metrics (CENTER - LARGE) */
+.stage-core {
+    position: relative;
+    z-index: 10;
+    margin: 140px 0 180px;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: coreZoomIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1.6s forwards;
+}
+
+@keyframes coreZoomIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.core-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Core Primary Card (HUGE) */
+.core-primary {
+    background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.15), rgba(15, 23, 42, 0.9));
+    backdrop-filter: blur(30px);
+    border: 2px solid rgba(251, 191, 36, 0.4);
+    border-radius: 24px;
+    padding: 48px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(251, 191, 36, 0.2),
+        0 0 40px rgba(251, 191, 36, 0.3);
+    animation: corePulse 3s infinite;
+    min-width: 400px;
+}
+
+@keyframes corePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 20px 60px rgba(251, 191, 36, 0.2), 0 0 40px rgba(251, 191, 36, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 20px 60px rgba(251, 191, 36, 0.3), 0 0 60px rgba(251, 191, 36, 0.5);
+    }
+}
+
+.card-icon-large {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.6));
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.card-value-huge {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #fbbf24;
+    line-height: 1;
+    margin: 16px 0;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+}
+
+.card-label-large {
+    font-size: 1.25rem;
+    color: var(--text);
+    font-weight: 600;
+    margin: 12px 0;
+}
+
+/* Core Secondary Card */
+.core-secondary {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(141, 144, 246, 0.3);
+    border-radius: 16px;
+    padding: 24px 32px;
+    text-align: center;
+    min-width: 280px;
+}
+
+.card-value-large {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 8px 0;
+}
+
+/* Stage 3: Split Paths */
+.journey-split {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.split-path {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.path-label {
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.risk-label {
+    color: #ef4444;
+}
+
+.opp-label {
+    color: #10b981;
+}
+
+/* Path Cards */
+.path-risk .metric-card,
+.path-opportunity .metric-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.path-risk .metric-card:nth-child(2) {
+    animation: cardSlideIn 0.6s ease-out 2.2s forwards;
+}
+
+.path-risk .metric-card:nth-child(3) {
+    animation: cardSlideIn 0.6s ease-out 2.4s forwards;
+}
+
+.path-opportunity .metric-card:nth-child(2) {
+    animation: cardSlideIn 0.6s ease-out 2.2s forwards;
+}
+
+.path-opportunity .metric-card:nth-child(3) {
+    animation: cardSlideIn 0.6s ease-out 2.4s forwards;
+}
+
+@keyframes cardSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Metric Cards (General) */
+.metric-card {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(141, 144, 246, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(141, 144, 246, 0.5);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 8px 0;
+}
+
+.card-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.card-trend {
+    font-size: 0.875rem;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.card-trend.positive {
+    color: #10b981;
+}
+
+.card-trend.negative {
+    color: #ef4444;
+}
+
+/* Zone-Specific Styles */
+.zone-risk {
+    border-color: rgba(239, 68, 68, 0.4);
+    animation: riskWarning 2s infinite;
+}
+
+@keyframes riskWarning {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+    }
+}
+
+.zone-opportunity {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.zone-opportunity:hover {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+/* Light Mode */
+.light-mode .metric-card {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.light-mode .core-primary {
+    background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.1), rgba(255, 255, 255, 0.95));
+}
+
+.light-mode .journey-subtitle,
+.light-mode .stage-label,
+.light-mode .card-label {
+    color: #64748b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .journey-split {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .core-primary {
+        min-width: auto;
+        padding: 32px 24px;
+    }
+
+    .card-value-huge {
+        font-size: 3rem;
+    }
+
+    .journey-flow {
+        display: none;
+        /* Hide complex SVG on mobile */
+    }
+}

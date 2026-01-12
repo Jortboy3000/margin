@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/s.png" />
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/enhanced_header.css">
+    <link rel="stylesheet" href="src/story.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing - Savra</title>
+    <style>
+        .pricing-hero {
+            padding: 80px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            position: relative;
+        }
+
+        .pricing-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .pricing-hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .pricing-section {
+            padding: 60px 20px 100px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 60px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .plan-name {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .price-container {
+            margin-bottom: 40px;
+        }
+
+        .price {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+        }
+
+        .currency {
+            font-size: 2rem;
+            margin-right: 4px;
+            color: var(--text-dim);
+        }
+
+        .period {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-left: 8px;
+        }
+
+        .feature-list {
+            text-align: left;
+            margin-bottom: 40px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        .feature-item i {
+            color: var(--accent-success);
+            flex-shrink: 0;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .value-propositions {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .value-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .value-card {
+            text-align: center;
+        }
+
+        .value-card i {
+            width: 48px;
+            height: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .value-card p {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .pricing-card {
+                padding: 40px 24px;
+            }
+
+            .price {
+                font-size: 3.5rem;
+            }
+        }
+
+        .enterprise-section {
+            padding: 40px 20px 100px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(99, 102, 241, 0.01);
+        }
+
+        .enterprise-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .enterprise-title {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .enterprise-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .enterprise-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .intro-label {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        /* Light Mode Overrides */
+        body.light-mode .pricing-hero {
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.03) 0%, transparent 70%);
+        }
+
+        body.light-mode .pricing-card {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .price {
+            color: #0f172a;
+        }
+
+        body.light-mode .value-propositions {
+            background: #f8fafc;
+            border-top-color: rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .value-card h3 {
+            color: #0f172a;
+        }
+
+        body.light-mode .enterprise-section {
+            background: rgba(99, 102, 241, 0.02);
+            border-top-color: rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .enterprise-title {
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <header class="site-header">
+            <nav class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="/assets/s.png" alt="Savra" />
+                    </a>
+                </div>
+
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="pricing.html" class="active">Pricing</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn-ghost">Sign in</a>
+                    <a href="signup.html" class="btn-demo">
+                        <span class="btn-demo-text">Sign Up</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <section class="pricing-hero">
+                <div class="container">
+                    <h1 class="text-gradient">Simple, Precise Pricing.</h1>
+                    <p>Introductory rates for founders who values intelligence. Enterprise scale available.</p>
+                </div>
+            </section>
+
+            <section class="pricing-section">
+                <div class="pricing-card">
+                    <div class="intro-label">Introductory Rate</div>
+                    <span class="plan-name">Savra All-Access</span>
+                    <div class="price-container">
+                        <div class="price">
+                            <span class="currency">$</span>300<span class="period">/ mo</span>
+                        </div>
+                        <p style="color: var(--text-dim); margin-top: 8px;">Billed monthly. Cancel anytime.</p>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Real-time Profit Monitoring</span>
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>95% Accurate Cashflow Forecasting</span>
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Multi-business Unified Dashboard</span>
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Unlimited Integrations (Xero, Quickbooks)</span>
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>AI-Driven Risk & Margin Alerts</span>
+                        </li>
+                        <li class="feature-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Private, Encrypted Data Security</span>
+                        </li>
+                    </ul>
+
+                    <a href="signup.html" class="btn-demo pricing-btn">
+                        <span class="btn-demo-text">Book the Demo</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="enterprise-section">
+                <div class="enterprise-content">
+                    <h2 class="enterprise-title">Need to scale?</h2>
+                    <div class="enterprise-features">
+                        <div class="enterprise-feature">
+                            <i data-lucide="building-2"></i>
+                            <span>5+ Entities</span>
+                        </div>
+                        <div class="enterprise-feature">
+                            <i data-lucide="users"></i>
+                            <span>Custom Workflows</span>
+                            </li>
+                            <div class="enterprise-feature">
+                                <i data-lucide="headset"></i>
+                                <span>Dedicated Support</span>
+                                </li>
+                            </div>
+                            <a href="signup.html" class="btn-ghost"
+                                style="color: var(--primary); text-decoration: underline;">
+                                Contact for Enterprise Pricing
+                            </a>
+                        </div>
+            </section>
+
+            <section class="value-propositions">
+                <div class="container">
+                    <div class="value-grid">
+                        <div class="value-card">
+                            <i data-lucide="clock"></i>
+                            <h3>Save 20+ Hours</h3>
+                            <p>Stop wasting weekends on manual spreadsheets. Savra automates the heavy lifting.</p>
+                        </div>
+                        <div class="value-card">
+                            <i data-lucide="shield-check"></i>
+                            <h3>Protect Your Margin</h3>
+                            <p>Catch cash leaks and underquoted jobs before they hit your bottom line.</p>
+                        </div>
+                        <div class="value-card">
+                            <i data-lucide="trending-up"></i>
+                            <h3>Predict the Future</h3>
+                            <p>See exactly where your cashflow will be in 6 months with confidence.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-trust">
+                    <p>Savra is advisory-only. Every recommendation requires explicit human approval. Decisions remain
+                        yours.</p>
+                </div>
+
+                <div class="footer-cta">
+                    <a href="signup.html" class="btn-footer-primary">Book a demo today</a>
+                </div>
+
+                <div class="footer-nav">
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="about.html#security">Security</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="careers.html#contact">Contact</a>
+                </div>
+
+                <div class="footer-trust-block">
+                    <h4>Data & Trust</h4>
+                    <ul>
+                        <li>Customer data is isolated and encrypted</li>
+                        <li>Uploaded documents are used as private reference only</li>
+                        <li>No customer data is used for model training</li>
+                        <li>Savra never auto-executes actions</li>
+                    </ul>
+                </div>
+
+                <div class="footer-legal">
+                    <a href="#privacy">Privacy Policy</a>
+                    <span class="divider">·</span>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

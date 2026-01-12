@@ -1,0 +1,474 @@
+/* Story Spine Container */
+.story-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* The Horizontal Spine */
+.story-spine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
+    padding: 0 40px;
+}
+
+/* Connecting Line */
+.story-spine::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    right: 60px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+/* Individual Nodes */
+.spine-node {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.spine-node:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(141, 144, 246, 0.2);
+}
+
+.spine-node.active {
+    background: #000;
+    border-color: #8d90f6;
+    box-shadow: 0 0 30px rgba(141, 144, 246, 0.3);
+    transform: scale(1.2);
+}
+
+.node-icon {
+    font-size: 24px;
+}
+
+.node-label {
+    position: absolute;
+    top: 70px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* The Detail Stage */
+.story-stage {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    backdrop-filter: blur(20px);
+    display: grid;
+    /* Freeze column widths to prevent shifting */
+    grid-template-columns: 55% 1fr;
+    gap: 40px;
+    /* Enforce fixed height to prevent vertical jitter */
+    height: 520px;
+    overflow-y: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease;
+}
+
+/* Left Column: Narrative & Metrics */
+.stage-content {
+    display: flex;
+    flex-direction: column;
+    /* Remove gap and use fixed spacing/heights instead for stability */
+    gap: 0;
+    height: 100%;
+}
+
+.stage-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    /* Fixed height to contain title + headline */
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.stage-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #8d90f6;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.stage-headline {
+    font-size: 32px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    /* Ensure it doesn't wrap unexpectedly */
+    white-space: nowrap;
+}
+
+.stage-narrative {
+    /* Fixed height to reserve space for max text length */
+    height: 240px;
+    overflow-y: auto;
+    /* Allow scroll if absolutely needed, but hide scrollbar usually */
+    scrollbar-width: none;
+}
+
+.stage-narrative p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.stage-narrative strong {
+    color: #fff;
+    font-weight: 600;
+    /* Monospace for data stability + intelligence aesthetic */
+    font-family: 'Courier New', Courier, monospace;
+    font-variant-numeric: tabular-nums;
+    /* Subtle highlight to denote "dynamic value" without boxing it in */
+    color: #a5b4fc;
+}
+
+/* Right Column: Controls */
+.stage-controls {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Fill height to match left side */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.controls-title {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.control-group {
+    margin-bottom: 25px;
+}
+
+.control-label {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+}
+
+.value-display {
+    font-variant-numeric: tabular-nums;
+    min-width: 5ch;
+    text-align: right;
+    display: inline-block;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #8d90f6;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(141, 144, 246, 0.4);
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal-anim {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* Light Mode Overrides (if needed base on index.html class) */
+body.light-mode .spine-node {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+body.light-mode .story-spine::before {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .node-label {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+body.light-mode .story-stage {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .stage-headline,
+body.light-mode .stage-narrative strong {
+    color: #000;
+}
+
+body.light-mode .stage-narrative p {
+    color: rgba(0, 0, 0, 0.7);
+    border-left-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .stage-controls {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .control-label,
+body.light-mode .controls-title {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+body.light-mode input[type="range"] {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .story-spine {
+        overflow-x: auto;
+        padding: 20px 20px;
+        justify-content: flex-start;
+        gap: 30px;
+        margin-bottom: 20px;
+        /* Scroll snapping optional */
+        scroll-snap-type: x mandatory;
+    }
+
+    .spine-node {
+        flex-shrink: 0;
+        scroll-snap-align: center;
+    }
+
+    .story-spine::before {
+        left: 20px;
+        right: 20px;
+        width: auto;
+        min-width: 500px;
+        /* Ensure line spans scrollable area */
+    }
+
+    .story-stage {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 30px;
+    }
+
+    .stage-headline {
+        font-size: 24px;
+    }
+}
+
+/* Break-Eean Bar */
+.break-even-container {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.be-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.be-track {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.be-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.5s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Because Strip - Narrative Intelligence */
+.because-strip {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.because-chip {
+    display: inline-flex;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.because-chip:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.because-chip.negative {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    /* Red for bad news */
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.because-chip.positive {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    /* Green for good news */
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Light mode overrides for chips */
+body.light-mode .because-chip.negative {
+    background: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
+    border-color: rgba(220, 38, 38, 0.2);
+}
+
+body.light-mode .because-chip.positive {
+    background: rgba(5, 150, 105, 0.1);
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.2);
+}
+
+/* Health Phase - Scorecard */
+.health-card {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.score-circle {
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.score-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px currentColor !important;
+}
+
+.vital-item {
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.vital-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.prescription-box {
+    margin-top: 15px;
+    line-height: 1.4;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Light Mode Overrides for Health */
+body.light-mode .score-circle {
+    background: rgba(255, 255, 255, 0.5);
+    text-shadow: none;
+}
+
+body.light-mode .vital-item {
+    background: rgba(0, 0, 0, 0.03) !important;
+    color: var(--text);
+}
+
+body.light-mode .vital-item div:first-child {
+    color: var(--text-dim) !important;
+}
+
+body.light-mode .prescription-box {
+    background: rgba(141, 144, 246, 0.1) !important;
+    color: var(--text) !important;
+    border-color: rgba(141, 144, 246, 0.3) !important;
+}
+
+/* Replay Button Special Styling */
+.btn-roi-next[data-next="quote"] {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.btn-roi-next[data-next="quote"]:hover {
+    background: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}

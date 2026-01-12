@@ -1,0 +1,162 @@
+/* =========================================
+   FOOTER - Serious, Authoritative
+   ========================================= */
+.site-footer {
+    background: #020202;
+    /* Darker than main page */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 6rem 2rem 3rem;
+    margin-top: 8rem;
+}
+
+.footer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Trust Statement */
+.footer-trust {
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-trust p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    font-weight: 500;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Primary Action */
+.footer-cta {
+    text-align: center;
+}
+
+.btn-footer-primary {
+    display: inline-block;
+    padding: 16px 40px;
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: #f1f5f9;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+}
+
+.btn-footer-primary:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-1px);
+}
+
+/* Navigation */
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: #e2e8f0;
+}
+
+/* Data & Trust Block */
+.footer-trust-block {
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-trust-block h4 {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.footer-trust-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-trust-block li {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.footer-trust-block li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #475569;
+}
+
+/* Legal Links */
+.footer-legal {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.footer-legal a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+    color: #94a3b8;
+}
+
+.footer-legal .divider {
+    color: #334155;
+    margin: 0 1rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .footer-nav {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .footer-trust-block ul {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .footer-trust p {
+        font-size: 1rem;
+    }
+}

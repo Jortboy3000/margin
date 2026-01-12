@@ -1,0 +1,493 @@
+/**
+ * Micro-Animations & Advanced Interactions
+ * Premium hover states, transitions, and delightful details
+ */
+
+/* ===================================
+   Magnetic Cursor Effect
+   =================================== */
+.magnetic-cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1),
+        opacity 0.2s ease;
+    opacity: 0;
+}
+
+.magnetic-cursor.active {
+    opacity: 0.6;
+}
+
+.magnetic-cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    transition: transform 0.1s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+/* Magnetic attraction zones */
+.btn-primary,
+.btn-outline,
+.api-node,
+.neural-node,
+.metric-card {
+    position: relative;
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ===================================
+   Breathing Animations
+   =================================== */
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+@keyframes breathe-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(141, 144, 246, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(141, 144, 246, 0.6);
+    }
+}
+
+.neural-node {
+    animation: breathe 4s ease-in-out infinite;
+}
+
+.neural-node.zone-core {
+    animation: breathe 3s ease-in-out infinite, breathe-glow 3s ease-in-out infinite;
+}
+
+/* ===================================
+   Liquid Morphing Transitions
+   =================================== */
+@keyframes liquid-morph {
+
+    0%,
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    25% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+
+    50% {
+        border-radius: 50% 50% 40% 60% / 30% 70% 60% 40%;
+    }
+
+    75% {
+        border-radius: 70% 30% 50% 50% / 40% 50% 50% 60%;
+    }
+}
+
+.atmo-blob {
+    animation: liquid-morph 20s ease-in-out infinite;
+}
+
+.atmo-1 {
+    animation-duration: 25s;
+    animation-delay: 0s;
+}
+
+.atmo-2 {
+    animation-duration: 30s;
+    animation-delay: -5s;
+}
+
+.atmo-3 {
+    animation-duration: 28s;
+    animation-delay: -10s;
+}
+
+/* ===================================
+   Iridescent Holographic Effects
+   =================================== */
+@keyframes holo-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.holo-accent {
+    background: linear-gradient(135deg,
+            #667eea 0%,
+            #764ba2 25%,
+            #f093fb 50%,
+            #4facfe 75%,
+            #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: holo-shift 8s ease infinite;
+}
+
+.iridescent-border {
+    position: relative;
+    overflow: hidden;
+}
+
+.iridescent-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(45deg,
+            #667eea,
+            #764ba2,
+            #f093fb,
+            #4facfe,
+            #00f2fe,
+            #667eea);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: holo-shift 6s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.iridescent-border:hover::before {
+    opacity: 1;
+}
+
+/* ===================================
+   Enhanced Micro-interactions
+   =================================== */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0) translate(-50%, -50%);
+    transform-origin: top left;
+    pointer-events: none;
+}
+
+.ripple-effect:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+/* Enhanced Button Animations */
+.btn-primary,
+.btn-outline {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+/* Swipe effect removed
+.btn-primary:hover::before {
+    transform: translateX(100%);
+}
+*/
+
+/* Animations removed per user request */
+/*
+.btn-primary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 40px rgba(141, 144, 246, 0.5);
+}
+
+.btn-outline:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(141, 144, 246, 0.3);
+}
+*/
+
+/* ===================================
+   Floating Animation
+   =================================== */
+@keyframes float-gentle {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes float-rotate {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+}
+
+.float-gentle {
+    animation: float-gentle 6s ease-in-out infinite;
+}
+
+.float-rotate {
+    animation: float-rotate 8s ease-in-out infinite;
+}
+
+/* ===================================
+   Shimmer Loading Effect
+   =================================== */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.1) 20%,
+            rgba(255, 255, 255, 0.3) 40%,
+            rgba(255, 255, 255, 0.1) 60%,
+            rgba(255, 255, 255, 0) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s linear infinite;
+}
+
+/* ===================================
+   Glitch Effect (Subtle)
+   =================================== */
+@keyframes glitch-1 {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    33% {
+        transform: translate(-2px, 2px);
+    }
+
+    66% {
+        transform: translate(2px, -2px);
+    }
+}
+
+.glitch-hover:hover {
+    animation: glitch-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ===================================
+   Depth Lift on Hover
+   =================================== */
+.lift-on-hover {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.lift-on-hover:hover {
+    transform: translateY(-8px) translateZ(20px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================
+   Pulse Glow
+   =================================== */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(141, 144, 246, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(141, 144, 246, 0.8);
+    }
+}
+
+.pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ===================================
+   Smooth Scale Transitions
+   =================================== */
+.smooth-scale {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.smooth-scale:hover {
+    transform: scale(1.05);
+}
+
+/* ===================================
+   Reveal Animations (Scroll-triggered)
+   =================================== */
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes reveal-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+}
+
+.reveal-on-scroll.visible {
+    animation: reveal-up 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.reveal-scale-scroll {
+    opacity: 0;
+}
+
+.reveal-scale-scroll.visible {
+    animation: reveal-scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ===================================
+   Typography Enhancements
+   =================================== */
+@keyframes text-shimmer {
+    0% {
+        background-position: -500px 0;
+    }
+
+    100% {
+        background-position: 500px 0;
+    }
+}
+
+.text-shimmer {
+    background: linear-gradient(90deg,
+            currentColor 40%,
+            rgba(255, 255, 255, 0.8) 50%,
+            currentColor 60%);
+    background-size: 500px 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: text-shimmer 3s linear infinite;
+}
+
+/* ===================================
+   Glass Morphism 2.0
+   =================================== */
+.glass-morphism-v2 {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-morphism-v2:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Light Mode Adjustments */
+body.light-mode .glass-morphism-v2 {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+body.light-mode .glass-morphism-v2:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}

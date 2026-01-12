@@ -1,0 +1,472 @@
+/**
+ * Integration Mind Map
+ * Structured Tree Layout with SVG Connectors
+ */
+
+.integration-section {
+    padding: 180px 20px;
+    /* Increased from 100px */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    /* Prevent scrollbars from absolute positioning */
+}
+
+.integration-header {
+    text-align: center;
+    margin-bottom: 120px;
+    /* Increased from 60px */
+}
+
+.integration-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.integration-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+}
+
+/* Mind Map Container */
+.mind-map-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+/* SVG Connectors */
+.mind-map-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.map-line {
+    fill: none;
+    stroke: rgba(141, 144, 246, 0.3);
+    stroke-width: 2;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 2s forwards ease-out;
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Nodes Base */
+.map-node {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(20, 20, 25, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    /* Pill Shape */
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    /* Center on coordinate */
+    transition: all 0.3s ease;
+    cursor: default;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.map-node:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    border-color: rgba(141, 144, 246, 0.5);
+    box-shadow: 0 0 15px rgba(141, 144, 246, 0.3);
+    z-index: 10;
+}
+
+/* Center Node (Savra) */
+.node-center {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 0 30px rgba(141, 144, 246, 0.4);
+    top: 50%;
+    left: 50%;
+}
+
+/* Category Nodes */
+.node-cat {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(148, 163, 184, 0.2);
+}
+
+.node-cat .node-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    width: 20px;
+    height: 20px;
+}
+
+.node-cat .node-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Category Specifics (Optional Coloring) */
+.cat-banking {
+    border-left: 3px solid #3b82f6;
+}
+
+.cat-commerce {
+    border-left: 3px solid #10b981;
+}
+
+.cat-accounting {
+    border-right: 3px solid #a855f7;
+    flex-direction: row-reverse;
+}
+
+/* Flip for right side */
+.cat-data {
+    border-right: 3px solid #f59e0b;
+    flex-direction: row-reverse;
+}
+
+/* Flip text align for right side categories */
+.cat-accounting .node-content,
+.cat-data .node-content {
+    text-align: right;
+}
+
+/* Leaf Nodes */
+.node-leaf {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.node-leaf .leaf-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: #94a3b8;
+}
+
+.node-leaf .leaf-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.node-leaf:hover .leaf-icon {
+    color: white;
+}
+
+/* Integration Badge */
+.integration-badge {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.integration-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(141, 144, 246, 0.05);
+    border: 1px solid rgba(141, 144, 246, 0.1);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dim);
+}
+
+.integration-count-number {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mind-map-container {
+        height: 800px;
+        /* Taller for vertical */
+    }
+
+    /* On mobile, maybe hide the complex map or scale it down massively */
+    /* Or switch to a vertical stack list */
+    .mind-map-svg {
+        display: none;
+    }
+
+    .map-node {
+        position: relative;
+        transform: none;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 10px auto;
+        width: fit-content;
+    }
+
+    .integration-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* =========================================
+   Features Radial Map
+   ========================================= */
+
+.features-radial-map {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 700px;
+    /* Canvas for the radial spread */
+    margin: 40px auto;
+}
+
+/* SVG Layer */
+.features-radial-map .mind-map-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.features-radial-map .map-line {
+    fill: none;
+    stroke: rgba(141, 144, 246, 0.2);
+    stroke-width: 2;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    /* Static for now */
+}
+
+/* Center Logo Node */
+.feature-center-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    /* Bigger container */
+    height: 160px;
+    background: transparent;
+    /* No grey background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    /* Removed box-shadow and border */
+    box-shadow: none;
+    border: none;
+    backdrop-filter: none;
+}
+
+.feature-center-logo img {
+    width: 80px;
+    height: auto;
+    /* Harder Shadow for Serious Look */
+    filter: drop-shadow(0 4px 6px rgba(15, 23, 42, 0.4));
+}
+
+/* Feature Nodes */
+/* Feature Nodes - Restoring Original Card Styles */
+.feature-radial-node {
+    position: absolute;
+    width: 280px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    /* Original Card Base Style */
+    background: rgba(15, 23, 42, 0.8);
+    /* Darker background for contrast */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for lift */
+}
+
+.feature-radial-node:hover {
+    transform: translate(-50%, -50%) translateY(-8px);
+    border-color: rgba(141, 144, 246, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 60px rgba(141, 144, 246, 0.2);
+    z-index: 20;
+}
+
+.feature-radial-node .feature-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    /* Default fallback */
+    background: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific Feature Colors (Restored from feature_cards.css) */
+.feature-radial-node[data-feature="cashflow"] .feature-icon-wrapper {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.feature-radial-node[data-feature="risk"] .feature-icon-wrapper {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.feature-radial-node[data-feature="auto"] .feature-icon-wrapper {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.feature-radial-node[data-feature="multi"] .feature-icon-wrapper {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.feature-radial-node[data-feature="security"] .feature-icon-wrapper {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.feature-radial-node .feature-icon {
+    width: auto;
+    height: auto;
+    background: none;
+    color: white;
+}
+
+.feature-radial-node .feature-icon svg {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+}
+
+.feature-radial-node .feature-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ffffff;
+    /* Pure white */
+}
+
+.feature-radial-node .feature-description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    /* Much lighter for readability on dark bg */
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.feature-radial-node .feature-highlight {
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(141, 144, 246, 0.15);
+    /* Slightly stronger bg */
+    border: 1px solid rgba(141, 144, 246, 0.4);
+    /* Stronger border */
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: #a5b4fc;
+    /* Lighter purple/blue for contrast */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: fit-content;
+}
+
+/* Positions (Pentagon Spread - Radius ~250px) */
+/* Center: 50% 50% */
+
+/* 1. Cash Flow (Top, 0deg) -> 50%, 15% */
+.pos-1 {
+    top: 15%;
+    left: 50%;
+}
+
+/* 2. Risk (Top Right, 72deg) -> 26%, 83% */
+.pos-2 {
+    top: 28%;
+    left: 82%;
+}
+
+/* 3. Security (Bottom Right, 144deg) -> 70%, 75% */
+.pos-3 {
+    top: 72%;
+    left: 75%;
+}
+
+/* 4. Multi-Business (Bottom Left, 216deg) -> 70%, 25% */
+.pos-4 {
+    top: 72%;
+    left: 25%;
+}
+
+/* 5. Auto-Cat (Top Left, 288deg) -> 28%, 18% */
+.pos-5 {
+    top: 28%;
+    left: 18%;
+}
+
+/* Mobile / Tablet Responsive */
+@media (max-width: 900px) {
+    .features-radial-map {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+        margin-top: 20px;
+    }
+
+    .features-radial-map .mind-map-svg,
+    .feature-center-logo {
+        display: none;
+        /* Hide complex map elements on mobile */
+    }
+
+    .feature-radial-node {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+
+    .feature-radial-node:hover {
+        transform: translateY(-5px) !important;
+    }
+}

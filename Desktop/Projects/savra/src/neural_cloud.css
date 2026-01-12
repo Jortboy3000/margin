@@ -1,0 +1,39 @@
+/* Sentient Neural Cloud */
+.neural-node {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 30% 30%, #a5b4fc, #8d90f6);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    will-change: transform, opacity, filter;
+    box-shadow: 0 0 15px rgba(141, 144, 246, 0.6);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0;
+    /* Hide text unless hovered */
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.neural-node:hover {
+    box-shadow: 0 0 25px rgba(141, 144, 246, 1), 0 0 50px rgba(141, 144, 246, 0.5);
+    z-index: 100 !important;
+    /* Always on top when hovered */
+}
+
+.neural-node.active-packet {
+    box-shadow: 0 0 30px #ffffff;
+    background: white;
+}
+
+.neural-synapse {
+    stroke: rgba(141, 144, 246, 0.4);
+    stroke-width: 1px;
+    vector-effect: non-scaling-stroke;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    mix-blend-mode: screen;
+}

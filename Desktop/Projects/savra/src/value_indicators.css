@@ -1,0 +1,577 @@
+/**
+ * Value Indicators & Live Data Visualizations
+ * Animated counters, progress bars, status indicators, and metrics displays
+ */
+
+/* ===================================
+   Animated Value Counters
+   =================================== */
+.value-counter {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    transition: transform 0.3s ease;
+}
+
+.value-counter.updating {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+/* Counter with trend indicator */
+.counter-with-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trend-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.trend-indicator.positive {
+    color: var(--accent-success);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.trend-indicator.negative {
+    color: var(--accent-danger);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.trend-indicator.neutral {
+    color: var(--text-dim);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.trend-arrow {
+    display: inline-block;
+    font-size: 1.2em;
+    animation: bounce-arrow 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce-arrow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.trend-indicator.positive .trend-arrow {
+    transform: rotate(-45deg);
+}
+
+.trend-indicator.negative .trend-arrow {
+    transform: rotate(45deg);
+}
+
+/* ===================================
+   Progress Bars & Meters
+   =================================== */
+.progress-bar-container {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    transition: width 1s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated shine effect */
+.progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    animation: progress-shine 2s ease-in-out infinite;
+}
+
+@keyframes progress-shine {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Health-based progress colors */
+.progress-bar-fill.health-critical {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.progress-bar-fill.health-warning {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.progress-bar-fill.health-good {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.progress-bar-fill.health-excellent {
+    background: linear-gradient(90deg, #8d90f6, #8b5cf6);
+}
+
+/* Circular Progress */
+.circular-progress {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.circular-progress svg {
+    transform: rotate(-90deg);
+}
+
+.circular-progress-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 8;
+}
+
+.circular-progress-fill {
+    fill: none;
+    stroke: url(#progressGradient);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.circular-progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* ===================================
+   Status Indicators & Badges
+   =================================== */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: status-pulse 2s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+.status-badge.status-live {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-success);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-badge.status-live .status-dot {
+    background: var(--accent-success);
+    box-shadow: 0 0 10px var(--accent-success);
+}
+
+.status-badge.status-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-warning);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-badge.status-warning .status-dot {
+    background: var(--accent-warning);
+    box-shadow: 0 0 10px var(--accent-warning);
+}
+
+.status-badge.status-critical {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--accent-danger);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-badge.status-critical .status-dot {
+    background: var(--accent-danger);
+    box-shadow: 0 0 10px var(--accent-danger);
+    animation: status-pulse-fast 1s ease-in-out infinite;
+}
+
+@keyframes status-pulse-fast {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(1.3);
+    }
+}
+
+.status-badge.status-info {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--accent-info);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.status-badge.status-info .status-dot {
+    background: var(--accent-info);
+    box-shadow: 0 0 10px var(--accent-info);
+}
+
+/* ===================================
+   Metric Cards with Live Values
+   =================================== */
+.metric-card-enhanced {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    transition: left 0.6s ease;
+}
+
+.metric-card-enhanced.updating::before {
+    left: 100%;
+}
+
+.metric-card-enhanced:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-value-large {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 8px 0;
+    background: linear-gradient(135deg, var(--text), var(--text-dim));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-variant-numeric: tabular-nums;
+}
+
+.metric-subtext {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===================================
+   Sparklines & Mini Charts
+   =================================== */
+.sparkline {
+    height: 40px;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.sparkline svg {
+    width: 100%;
+    height: 100%;
+}
+
+.sparkline-line {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sparkline-area {
+    fill: url(#sparklineGradient);
+    opacity: 0.3;
+}
+
+.sparkline-dot {
+    fill: var(--primary);
+    r: 3;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.sparkline:hover .sparkline-dot {
+    opacity: 1;
+}
+
+/* ===================================
+   Confidence Meters & Gauges
+   =================================== */
+.confidence-meter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.confidence-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.confidence-percentage {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.confidence-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.confidence-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 1s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+.confidence-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+    animation: confidence-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes confidence-shimmer {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Confidence level colors */
+.confidence-fill.confidence-high {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.confidence-fill.confidence-medium {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.confidence-fill.confidence-low {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+/* ===================================
+   Live Data Feed Indicators
+   =================================== */
+.data-feed-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-info);
+}
+
+.data-pulse {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-info);
+    border-radius: 50%;
+    animation: data-pulse-anim 1.5s ease-in-out infinite;
+}
+
+@keyframes data-pulse-anim {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+
+    50% {
+        opacity: 0.7;
+        box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);
+    }
+}
+
+/* ===================================
+   Numeric Display Enhancements
+   =================================== */
+.numeric-display {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    letter-spacing: -0.02em;
+}
+
+.currency-symbol {
+    font-size: 0.7em;
+    opacity: 0.7;
+    margin-right: 2px;
+}
+
+.percentage-symbol {
+    font-size: 0.8em;
+    opacity: 0.8;
+    margin-left: 2px;
+}
+
+/* ===================================
+   Comparison Indicators
+   =================================== */
+.comparison-card {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comparison-value {
+    flex: 1;
+}
+
+.comparison-vs {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    font-weight: 600;
+}
+
+.comparison-delta {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.comparison-delta.positive {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-success);
+}
+
+.comparison-delta.negative {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--accent-danger);
+}
+
+/* ===================================
+   Light Mode Adjustments
+   =================================== */
+body.light-mode .progress-bar-container {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .metric-card-enhanced {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .metric-card-enhanced:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .status-badge.status-live {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+body.light-mode .comparison-card {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/s.png" />
+    <link rel="stylesheet" href="/src/story.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Savra</title>
+</head>
+
+<body class="light-mode">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="app">
+        <!-- Header -->
+        <header class="site-header">
+            <nav class="container">
+                <div class="logo">
+                    <!-- Logo acts as theme toggle on Home Page -->
+                    <div id="theme-toggle" style="cursor: pointer;" aria-label="Toggle theme">
+                        <img src="/assets/s.png" alt="Savra" />
+                    </div>
+                </div>
+
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn-ghost">Sign in</a>
+                    <a href="signup.html" class="btn-demo">
+                        <span class="btn-demo-text">Sign Up</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <!-- Hero Section -->
+            <section class="hub-section">
+                <!-- Atmospheric Lighting -->
+                <!-- Professional Background -->
+                <div class="professional-bg">
+                    <div class="bg-grid"></div>
+                    <div class="bg-noise"></div>
+                </div>
+
+                <div class="hero-enhanced">
+                    <!-- NEW: Atmospheric Background -->
+
+
+                    <div class="hero-content">
+                        <h1 class="text-gradient">Proactive Intelligence for your Business</h1>
+                        <p class="hero-sub-reason">Savra gives you the insight of a CFO, strategist and analyst, without
+                            the payroll.</p>
+
+                        <div class="hero-actions">
+                            <button class="btn-primary">Book Demo</button>
+                            <button class="btn-secondary" id="btn-sample-data-hero"
+                                onclick="document.getElementById('pilot-stats').scrollIntoView({behavior: 'smooth'})">
+                                <span class="icon"><i data-lucide="bar-chart-2"></i></span> View a live demo
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="features-radial-map">
+                        <svg class="mind-map-svg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet">
+                            <!-- Connections from Center (500, 350) to Nodes -->
+                            <!-- Base Lines -->
+                            <path class="map-line" d="M 500 350 L 500 105" /> <!-- Top -->
+                            <path class="map-line" d="M 500 350 L 820 196" /> <!-- Top Right -->
+                            <path class="map-line" d="M 500 350 L 750 504" /> <!-- Bottom Right -->
+                            <path class="map-line" d="M 500 350 L 250 504" /> <!-- Bottom Left -->
+                            <path class="map-line" d="M 500 350 L 180 196" /> <!-- Top Left -->
+
+                            <!-- Pulse Layer (Glowing Duplicates) -->
+                            <path class="map-line pulse-layer" d="M 500 350 L 500 105" style="animation-delay: 0s;" />
+                            <path class="map-line pulse-layer" d="M 500 350 L 820 196" style="animation-delay: 0.5s;" />
+                            <path class="map-line pulse-layer" d="M 500 350 L 750 504" style="animation-delay: 1s;" />
+                            <path class="map-line pulse-layer" d="M 500 350 L 250 504" style="animation-delay: 1.5s;" />
+                            <path class="map-line pulse-layer" d="M 500 350 L 180 196" style="animation-delay: 2s;" />
+                        </svg>
+
+                        <!-- Center Node -->
+                        <div class="feature-center-logo">
+                            <img src="/assets/s.svg" alt="Savra" />
+                        </div>
+
+                        <!-- 1. Cash Flow (Top) -->
+                        <div class="feature-radial-node pos-1" data-feature="cashflow">
+                            <div class="feature-icon-wrapper">
+                                <div class="feature-icon"><i data-lucide="trending-up"></i></div>
+                            </div>
+                            <h3 class="feature-title">Cash Flow Prediction</h3>
+                            <p class="feature-description">See 6 months ahead with Savra-powered forecasting. Know
+                                exactly when money's coming in.</p>
+                            <div class="feature-highlight">95% ACCURACY</div>
+                        </div>
+
+                        <!-- 2. Risk (Top Right) -->
+                        <div class="feature-radial-node pos-2" data-feature="risk">
+                            <div class="feature-icon-wrapper">
+                                <div class="feature-icon"><i data-lucide="radar"></i></div>
+                            </div>
+                            <h3 class="feature-title">Risk Detection</h3>
+                            <p class="feature-description">Savra spots tax risks, burn rate spikes, and hidden expenses
+                                before they become problems.</p>
+                            <div class="feature-highlight">REAL-TIME ALERTS</div>
+                        </div>
+
+                        <!-- 3. Security (Bottom Right) -->
+                        <div class="feature-radial-node pos-3" data-feature="security">
+                            <div class="feature-icon-wrapper">
+                                <div class="feature-icon"><i data-lucide="fingerprint"></i></div>
+                            </div>
+                            <h3 class="feature-title">Bank-Level Security</h3>
+                            <p class="feature-description">End-to-end encryption, isolated data, and SOC 2 compliance.
+                                Your data never trains our models.</p>
+                            <div class="feature-highlight">ENTERPRISE-GRADE</div>
+                        </div>
+
+                        <!-- 4. Multi-Business (Bottom Left) -->
+                        <div class="feature-radial-node pos-4" data-feature="multi">
+                            <div class="feature-icon-wrapper">
+                                <div class="feature-icon"><i data-lucide="globe"></i></div>
+                            </div>
+                            <h3 class="feature-title">Multi-Business Dashboard</h3>
+                            <p class="feature-description">Run multiple ventures? See all your businesses in one
+                                unified, intelligent dashboard.</p>
+                            <div class="feature-highlight">UNLIMITED BUSINESSES</div>
+                        </div>
+
+                        <!-- 5. Auto-Cat (Top Left) -->
+                        <div class="feature-radial-node pos-5" data-feature="auto">
+                            <div class="feature-icon-wrapper">
+                                <div class="feature-icon"><i data-lucide="sparkles"></i></div>
+                            </div>
+                            <h3 class="feature-title">Auto-Categorisation</h3>
+                            <p class="feature-description">No more manual tagging. Savra learns your business and
+                                categorises every transaction instantly.</p>
+                            <div class="feature-highlight">ZERO MANUAL WORK</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="trust-indicators" id="pilot-stats">
+                    <div class="trust-stat">
+                        <div class="trust-stat-value" style="font-size: 1.5rem;">FAST SETUP</div>
+                        <div class="trust-stat-label">Under 10 minutes</div>
+                    </div>
+                    <div class="trust-stat">
+                        <div class="trust-stat-value live-indicator" style="font-size: 1.5rem;"><span
+                                class="live-dot"></span>LIVE BANK DATA</div>
+                        <div class="trust-stat-label">Real-time connection</div>
+                    </div>
+                    <div class="trust-stat">
+                        <div class="trust-stat-value" style="font-size: 1.25rem;">AUTOMATED DETECTION</div>
+                        <div class="trust-stat-label">No manual checking</div>
+                    </div>
+                </div>
+
+                <!-- Interactive Story Dashboard -->
+                <div id="story-spine-app"></div>
+            </section>
+
+            <!-- Feature Cards Section -->
+            <section class="features-section">
+                <div class="features-header">
+                    <h2 class="features-title">Everything You Need to Thrive</h2>
+                    <p class="features-subtitle">Powerful features that work together seamlessly</p>
+                </div>
+
+                <div class="interactive-logic-container">
+                    <div class="dashboard-preview glass-morphism-v2 float-gentle">
+                        <div class="preview-header">
+                            <div class="preview-title">Your Dashboard</div>
+                            <div class="preview-live-badge">
+                                <div class="preview-live-dot"></div>
+                                <span>Live</span>
+                            </div>
+                        </div>
+
+                        <div class="preview-metrics">
+                            <div class="preview-metric">
+                                <div class="preview-metric-label">Cash Flow</div>
+                                <div class="preview-metric-value value-counter" data-value="12.4" data-prefix="$"
+                                    data-suffix="k">$0k</div>
+                                <div class="preview-metric-trend positive">↑ 10%</div>
+                            </div>
+                            <div class="preview-metric">
+                                <div class="preview-metric-label">Runway</div>
+                                <div class="preview-metric-value value-counter" data-value="5.2" data-suffix=" mo">0
+                                    mo</div>
+                                <div class="preview-metric-trend positive">↑ Healthy</div>
+                            </div>
+                            <div class="preview-metric">
+                                <div class="preview-metric-label">Burn Rate</div>
+                                <div class="preview-metric-value value-counter" data-value="8.2" data-prefix="$"
+                                    data-suffix="k">$0k</div>
+                                <div class="preview-metric-trend negative">Monitor</div>
+                            </div>
+                            <div class="preview-metric">
+                                <div class="preview-metric-label">Profit</div>
+                                <div class="preview-metric-value value-counter" data-value="32" data-suffix="%">0%
+                                </div>
+                                <div class="preview-metric-trend positive">↑ 5%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roi-calculator" id="roi-calculator-widget">
+                        <!-- Step 1: Revenue -->
+                        <div class="roi-step active" data-step="1">
+                            <h3 class="roi-title">Monthly Revenue?</h3>
+                            <div class="roi-input-group">
+                                <div class="roi-label">
+                                    <span>Current Estimate</span>
+                                    <span class="roi-value" id="revenue-display">$50k</span>
+                                </div>
+                                <input type="range" class="roi-slider" id="revenue-slider" min="10000" max="500000"
+                                    value="50000" step="5000">
+                            </div>
+                            <div class="roi-nav-group single-next">
+                                <button class="btn-roi-next" data-next="2">Next <span>→</span></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Transactions -->
+                        <div class="roi-step" data-step="2">
+                            <h3 class="roi-title">Monthly Transactions?</h3>
+                            <div class="roi-input-group">
+                                <div class="roi-label">
+                                    <span>Volume</span>
+                                    <span class="roi-value" id="transactions-display">500</span>
+                                </div>
+                                <input type="range" class="roi-slider" id="transactions-slider" min="50" max="5000"
+                                    value="500" step="50">
+                            </div>
+                            <div class="roi-nav-group">
+                                <button class="btn-roi-back" data-back="1">Back</button>
+                                <button class="btn-roi-next" data-next="3">Calculate <span>→</span></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Result -->
+                        <div class="roi-step" data-step="3">
+                            <h3 class="roi-title">Potential Annual Savings</h3>
+                            <div class="roi-result">
+                                <div class="roi-result-value" data-current="0">$0</div>
+                                <div class="roi-result-subtext">Time & operational costs saved</div>
+                            </div>
+                            <button class="btn-roi-reset" data-reset="1">Recalculate <span>↺</span></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Integration Showcase Section -->
+            <div class="mind-map-container">
+                <!-- SVG Layer for Connectors -->
+                <svg class="mind-map-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+                    <!-- Left Side Connections -->
+                    <path class="map-line" d="M 400 250 C 325 250, 325 150, 250 150" /> <!-- To Banking -->
+                    <path class="map-line" d="M 400 250 C 325 250, 325 350, 250 350" /> <!-- To Commerce -->
+
+                    <path class="map-line" d="M 250 150 C 170 150, 170 100, 90 100" /> <!-- Bank -> Stripe -->
+                    <path class="map-line" d="M 250 150 C 170 150, 170 200, 90 200" /> <!-- Bank -> PayPal -->
+
+                    <path class="map-line" d="M 250 350 C 170 350, 170 300, 90 300" /> <!-- Comm -> Shopify -->
+                    <path class="map-line" d="M 250 350 C 170 350, 170 400, 90 400" /> <!-- Comm -> Woo -->
+
+                    <!-- Right Side Connections -->
+                    <path class="map-line" d="M 400 250 C 475 250, 475 150, 550 150" /> <!-- To Accounting -->
+                    <path class="map-line" d="M 400 250 C 475 250, 475 350, 550 350" /> <!-- To Data -->
+
+                    <!-- Integration Hub Header -->
+                    <div class="hub-header"
+                        style="text-align: center; margin-bottom: 40px; position: relative; z-index: 10;">
+                        <h2 class="section-title">Connects with everything you use</h2>
+                        <p class="section-subtitle">Savra unifies your entire financial stack in seconds.</p>
+                    </div>
+
+                    <svg class="mind-map-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+                        <!-- Connections from Center (400, 250) to Categories -->
+                        <path class="map-line" d="M 400 250 L 250 150" /> <!-- Center -> Banking -->
+                        <path class="map-line" d="M 400 250 L 250 350" /> <!-- Center -> Commerce -->
+                        <path class="map-line" d="M 400 250 L 550 150" /> <!-- Center -> Accounting -->
+                        <path class="map-line" d="M 400 250 L 550 350" /> <!-- Center -> Data -->
+
+                        <!-- Existing Connections (Categories -> Leaves) -->
+                        <path class="map-line" d="M 250 150 C 170 150, 170 100, 90 100" />
+                        <!-- Bank -> Stripe (Leaf) -->
+                        <!-- Note: Adjusted coords based on node positions -->
+
+                        <path class="map-line" d="M 550 150 C 630 150, 630 100, 710 100" /> <!-- Acc -> Xero -->
+                        <path class="map-line" d="M 550 150 C 630 150, 630 200, 710 200" /> <!-- Acc -> QB -->
+
+                        <path class="map-line" d="M 550 350 C 630 350, 630 350, 710 350" /> <!-- Data -> Slack -->
+                    </svg>
+
+                    <!-- Nodes Layer -->
+
+                    <!-- Center -->
+                    <div class="feature-center-logo" style="left: 50%; top: 50%; width: 80px; height: 80px;">
+                        <img src="/assets/s.svg" alt="Savra" />
+                    </div>
+
+                    <!-- Level 1 Categories (Left) -->
+                    <div class="map-node node-cat cat-banking" style="top: 150px; left: 250px;">
+                        <span class="node-icon"><i data-lucide="landmark"></i></span>
+                        <span class="node-label">Banking</span>
+                    </div>
+                    <div class="map-node node-cat cat-commerce" style="top: 350px; left: 250px;">
+                        <span class="node-icon"><i data-lucide="shopping-cart"></i></span>
+                        <span class="node-label">Commerce</span>
+                    </div>
+
+                    <!-- Level 2 Leaves (Left) -->
+                    <div class="map-node node-leaf" style="top: 100px; left: 90px;">
+                        <span class="leaf-icon"><i data-lucide="credit-card"></i></span>
+                        <span class="leaf-label">Stripe</span>
+                    </div>
+                    <div class="map-node node-leaf" style="top: 200px; left: 90px;">
+                        <span class="leaf-icon"><i data-lucide="wallet"></i></span>
+                        <span class="leaf-label">PayPal</span>
+                    </div>
+
+                    <div class="map-node node-leaf" style="top: 300px; left: 90px;">
+                        <span class="leaf-icon"><i data-lucide="shopping-bag"></i></span>
+                        <span class="leaf-label">Shopify</span>
+                    </div>
+                    <div class="map-node node-leaf" style="top: 400px; left: 90px;">
+                        <span class="leaf-icon"><i data-lucide="package"></i></span>
+                        <span class="leaf-label">Woo</span>
+                    </div>
+
+
+                    <!-- Level 1 Categories (Right) -->
+                    <div class="map-node node-cat cat-accounting" style="top: 150px; left: 550px;">
+                        <span class="node-icon"><i data-lucide="file-spreadsheet"></i></span>
+                        <span class="node-label">Accounting</span>
+                    </div>
+                    <div class="map-node node-cat cat-data" style="top: 350px; left: 550px;">
+                        <span class="node-icon"><i data-lucide="database"></i></span>
+                        <span class="node-label">Data</span>
+                    </div>
+
+                    <!-- Level 2 Leaves (Right) -->
+                    <div class="map-node node-leaf" style="top: 100px; left: 710px;">
+                        <span class="leaf-icon"><i data-lucide="file-text"></i></span>
+                        <span class="leaf-label">Xero</span>
+                    </div>
+                    <div class="map-node node-leaf" style="top: 200px; left: 710px;">
+                        <span class="leaf-icon"><i data-lucide="book"></i></span>
+                        <span class="leaf-label">QuickBooks</span>
+                    </div>
+
+                    <div class="map-node node-leaf" style="top: 350px; left: 710px;">
+                        <span class="leaf-icon"><i data-lucide="slack"></i></span>
+                        <span class="leaf-label">Slack</span>
+                    </div>
+            </div>
+
+            <div class="integration-badge">
+                <div class="integration-count">
+                    <span class="integration-count-number">50+</span>
+                    <span>integrations and counting</span>
+                </div>
+            </div>
+            </section>
+
+            <!-- Before vs After Comparison Section -->
+            <section class="comparison-section">
+                <div class="comparison-header">
+                    <h2 class="comparison-title">The Difference is Night & Day</h2>
+                    <p class="comparison-subtitle">See what changes when intelligence enters the room</p>
+                </div>
+
+                <div class="comparison-container">
+                    <div class="comparison-before">
+                        <div class="comparison-label">❌ Before</div>
+                        <h3 class="comparison-side-title">Spreadsheet Chaos</h3>
+
+                        <ul class="comparison-list">
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="file-spreadsheet"></i></span>
+                                <span class="comparison-item-text">Hours spent updating spreadsheets manually</span>
+                            </li>
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="clock"></i></span>
+                                <span class="comparison-item-text">Discover problems weeks too late</span>
+                            </li>
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="alert-octagon"></i></span>
+                                <span class="comparison-item-text">Can't see across multiple businesses</span>
+                            </li>
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="trending-down"></i></span>
+                                <span class="comparison-item-text">Miss tax deductions & savings</span>
+                            </li>
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="help-circle"></i></span>
+                                <span class="comparison-item-text">No visibility into future cash flow</span>
+                            </li>
+                        </ul>
+
+                        <div class="comparison-metrics">
+                            <div class="comparison-metric">
+                                <div class="comparison-metric-value">20+</div>
+                                <div class="comparison-metric-label">Hours/month</div>
+                            </div>
+                            <div class="comparison-metric">
+                                <div class="comparison-metric-value">$0</div>
+                                <div class="comparison-metric-label">Insights</div>
+                            </div>
+                            <div class="comparison-metric">
+                                <div class="comparison-metric-value">High</div>
+                                <div class="comparison-metric-label">Stress</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-after">
+                        <div class="comparison-label">✅ After</div>
+                        <h3 class="comparison-side-title">Intelligent Clarity</h3>
+
+                        <ul class="comparison-list">
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="zap"></i></span>
+                                <span class="comparison-item-text">Everything updates automatically in real-time</span>
+                            </li>
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="target"></i></span>
+                                <span class="comparison-item-text">Get alerted before issues become expensive</span>
+                            </li>
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="globe"></i></span>
+                                <span class="comparison-item-text">Unified view of all your businesses</span>
+                            </li>
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="coins"></i></span>
+                                <span class="comparison-item-text">Savra finds every optimisation opportunity</span>
+                            </li>
+                            <li class="comparison-item">
+                                <span class="comparison-item-icon"><i data-lucide="sparkles"></i></span>
+                                <span class="comparison-item-text">See 6 months ahead with 95% accuracy</span>
+                            </li>
+                        </ul>
+
+                        <div class="comparison-metrics">
+                            <div class="comparison-metric">
+                                <div class="comparison-metric-value">5min</div>
+                                <div class="comparison-metric-label">per month</div>
+                            </div>
+                            <div class="comparison-metric">
+                                <div class="comparison-metric-value">24/7</div>
+                                <div class="comparison-metric-label">Monitoring</div>
+                            </div>
+                            <div class="comparison-metric">
+                                <div class="comparison-metric-value">Peace</div>
+                                <div class="comparison-metric-label">of Mind</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-vs">VS</div>
+                </div>
+    </div>
+    </section>
+
+    <!-- Pilot Program / Sample Data Section -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-trust">
+                <p>Savra is advisory-only. Every recommendation requires explicit human approval. Decisions remain
+                    yours.</p>
+            </div>
+
+            <div class="footer-cta">
+                <a href="signup.html" class="btn-footer-primary">Book a demo today</a>
+            </div>
+
+            <div class="footer-nav">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#security">Security</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-trust-block">
+                <h4>Data & Trust</h4>
+                <ul>
+                    <li>Customer data is isolated and encrypted</li>
+                    <li>Uploaded documents are used as private reference only</li>
+                    <li>No customer data is used for model training</li>
+                    <li>Savra never auto-executes actions</li>
+                </ul>
+            </div>
+
+            <div class="footer-legal">
+                <a href="#privacy">Privacy Policy</a>
+                <span class="divider">·</span>
+                <a href="#terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

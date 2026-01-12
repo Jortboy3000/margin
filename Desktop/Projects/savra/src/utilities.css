@@ -1,0 +1,172 @@
+/* Enhanced Utility Classes & Component Styling */
+
+/* Flex gap fix for older browsers */
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Enhanced metric card layout */
+.metric-card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.metric-card.core-primary,
+.metric-card.core-secondary {
+    min-height: 200px;
+}
+
+/* Ensure numeric values are properly styled */
+.card-value,
+.card-value-large,
+.card-value-huge {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    letter-spacing: -0.02em;
+}
+
+/* Particle stream enhancement */
+.stream-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 1), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Gradient definitions for SVG */
+svg defs {
+    pointer-events: none;
+}
+
+/* Enhanced business journey styling */
+.business-journey {
+    position: relative;
+    z-index: 100;
+}
+
+/* Additional utility animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Enhance existing card shadows on hover */
+.metric-card:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Ensure proper spacing for new components */
+.confidence-meter,
+.comparison-card,
+.sparkline {
+    width: 100%;
+}
+
+/* Light mode text visibility */
+body.light-mode .metric-label {
+    color: #64748b;
+}
+
+body.light-mode .card-label,
+body.light-mode .card-label-large {
+    color: #475569;
+}
+
+/* Cursor styles for interactive elements */
+.metric-card,
+.btn-primary,
+.btn-outline,
+.neural-node {
+    cursor: pointer;
+}
+
+/* Overlay background blur for modals/cards */
+.backdrop-blur-strong {
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+/* Animated gradient text */
+.gradient-text-animated {
+    background: linear-gradient(90deg,
+            var(--primary),
+            var(--secondary),
+            var(--accent-success),
+            var(--primary));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-flow 6s ease infinite;
+}
+
+@keyframes gradient-flow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Accessibility: Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .magnetic-cursor,
+    .magnetic-cursor-dot {
+        display: none;
+    }
+
+    .breathe,
+    .float-gentle,
+    .float-rotate,
+    .pulse-glow {
+        animation: none !important;
+    }
+}
+
+/* Hide vertical stream visualization */
+.stream-container {
+    display: none !important;
+}
+
+/* Print styles */
+@media print {
+
+    .magnetic-cursor,
+    .magnetic-cursor-dot,
+    .stream-particle,
+    .atmo-blob {
+        display: none !important;
+    }
+}

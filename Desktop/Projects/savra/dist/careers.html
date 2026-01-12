@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/s.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers - Savra</title>
+    <style>
+        /* Specific overrides for Careers Page */
+        .careers-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .values-section {
+            padding: 50px 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            text-align: left;
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .value-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .value-desc {
+            color: var(--text-dim);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .roles-section {
+            padding: 60px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(to right, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .role-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .role-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(10px);
+            border-color: var(--primary);
+        }
+
+        .role-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .role-meta {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            display: flex;
+            gap: 15px;
+        }
+
+        .role-action {
+            color: var(--primary);
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover .role-action {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .role-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .role-action {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Light Mode Overrides */
+        body.light-mode .careers-hero h1 {
+            background: linear-gradient(to right, #000, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.light-mode .hero-sub-reason {
+            color: #1f2937;
+        }
+
+        body.light-mode .value-card {
+            background: #fff;
+            border-color: #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .value-title {
+            color: #111827;
+        }
+
+        body.light-mode .value-desc {
+            color: #4b5563;
+        }
+
+        body.light-mode .section-title {
+            background: linear-gradient(to right, #000, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.light-mode .role-card {
+            border-bottom-color: #e5e7eb;
+        }
+
+        body.light-mode .role-card:hover {
+            background: #f9fafb;
+        }
+
+        body.light-mode .role-title {
+            color: #111827;
+        }
+
+        body.light-mode .role-meta {
+            color: #374151;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/main-CC3iLuPT.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-Y22smh0-.css">
+</head>
+
+<body class="light-mode">
+    <div id="app">
+        <!-- Professional Background -->
+        <div class="professional-bg">
+            <div class="bg-grid"></div>
+            <div class="bg-noise"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="site-header">
+            <nav class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="/assets/s.png" alt="Savra" />
+                    </a>
+                </div>
+
+                <div class="nav-links">
+                    <div class="nav-item-dropdown">
+                        <a>Product <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-item-icon">💰</div>
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Cash Flow Prediction</div>
+                                    <div class="dropdown-item-description">See 6 months ahead with Savra</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-item-icon">⚠️</div>
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Risk Detection</div>
+                                    <div class="dropdown-item-description">Spot issues before they cost you</div>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-item-icon">👁</div>
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">See All Features</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item-dropdown">
+                        <a>Resources <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-item-icon">📖</div>
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Guides</div>
+                                    <div class="dropdown-item-description">Learn best practices</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-item-icon">📊</div>
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-title">Case Studies</div>
+                                    <div class="dropdown-item-description">See real results</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="careers.html" style="color: var(--primary);">Careers</a>
+                    <a href="index.html#pricing">Pricing</a>
+
+                </div>
+
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i data-lucide="sun" class="theme-icon sun-icon"></i>
+                    <i data-lucide="moon" class="theme-icon moon-icon"></i>
+                </button>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn-ghost">Sign in</a>
+                    <a href="#" class="btn-demo">
+                        <span class="btn-demo-text">Book Demo</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <!-- Hero Section -->
+            <section class="hub-section careers-hero">
+                <!-- Atmospheric Lighting -->
+                <div class="atmosphere-layer">
+                    <div class="atmo-blob atmo-1"></div>
+                    <div class="atmo-blob atmo-2"></div>
+                </div>
+
+                <div class="hero-content" style="z-index: 10; padding: 0 20px; margin-top: 60px;">
+                    <h1 class="text-gradient" style="margin-top: 0;">Build the Future of<br>Financial Intelligence</h1>
+                    <p class="hero-sub-reason" style="max-width: 600px; margin: 20px auto 30px;">
+                        Join the team that's replacing spreadsheets with Savra. We're hiring visionaries,
+                        builders, and problem solvers.
+                    </p>
+                    <a href="#roles" class="btn-primary">View Open Roles</a>
+
+                    <div class="associate-cta" style="margin-top: 24px;">
+                        <p style="color: var(--text-dim); font-size: 0.95rem;">
+                            Early Career? <a href="#"
+                                style="color: var(--primary); text-decoration: none; font-weight: 600; margin-left: 4px; transition: opacity 0.2s;">Join
+                                our Associate Program →</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="values-section">
+                <div class="container">
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <span class="value-icon">⚡</span>
+                            <h3 class="value-title">Velocity & Vision</h3>
+                            <p class="value-desc">We ship fast, fail faster, and learn instantly. We don't wait for
+                                permission to innovate.</p>
+                        </div>
+                        <div class="value-card">
+                            <span class="value-icon">🧠</span>
+                            <h3 class="value-title">Deep Problems</h3>
+                            <p class="value-desc">We're solving the hardest problems in fintech: predictive cash flow
+                                modelling and autonomous risk detection.</p>
+                        </div>
+                        <div class="value-card">
+                            <span class="value-icon">🤝</span>
+                            <h3 class="value-title">Ownership</h3>
+                            <p class="value-desc">Everyone at Savra is an owner. You don't just build features; you
+                                define the future of the product.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Open Roles -->
+            <section id="roles" class="roles-section">
+                <h2 class="section-title">Open Positions</h2>
+
+                <a href="#" class="role-card">
+                    <div>
+                        <div class="role-title">Senior Full Stack Engineer</div>
+                        <div class="role-meta">Engineering · Remote / SF · Full Time</div>
+                    </div>
+                    <div class="role-action">Apply Now →</div>
+                </a>
+
+                <a href="#" class="role-card">
+                    <div>
+                        <div class="role-title">Founding Product Designer</div>
+                        <div class="role-meta">Design · New York · Full Time</div>
+                    </div>
+                    <div class="role-action">Apply Now →</div>
+                </a>
+
+                <a href="#" class="role-card">
+                    <div>
+                        <div class="role-title">Growth Marketing Lead</div>
+                        <div class="role-meta">Marketing · Remote · Full Time</div>
+                    </div>
+                    <div class="role-action">Apply Now →</div>
+                </a>
+
+                <a href="#" class="role-card">
+                    <div>
+                        <div class="role-title">Machine Learning Engineer</div>
+                        <div class="role-meta">Data · SF · Full Time</div>
+                    </div>
+                    <div class="role-action">Apply Now →</div>
+                </a>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-trust">
+                    <p>Savra is advisory-only. Every recommendation requires explicit human approval. Decisions remain
+                        yours.</p>
+                </div>
+
+                <div class="footer-cta">
+                    <a href="#" class="btn-footer-primary">Ask your first question</a>
+                </div>
+
+                <div class="footer-nav">
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="index.html#security">Security</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+
+                <div class="footer-trust-block">
+                    <h4>Data & Trust</h4>
+                    <ul>
+                        <li>Customer data is isolated and encrypted</li>
+                        <li>Uploaded documents are used as private reference only</li>
+                        <li>No customer data is used for model training</li>
+                        <li>Savra never auto-executes actions</li>
+                    </ul>
+                </div>
+
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <span class="divider">·</span>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</body>
+
+</html>

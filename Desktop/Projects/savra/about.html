@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/s.png" />
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/enhanced_header.css">
+    <link rel="stylesheet" href="src/story.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Savra</title>
+    <style>
+        /* About Us Specific Styles */
+        .about-hero {
+            padding: 120px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            position: relative;
+            display: block !important;
+        }
+
+
+
+        .about-hero .container {
+            display: block !important;
+            max-width: 900px;
+            margin: 0 auto !important;
+        }
+
+        .about-hero h1 {
+            font-size: 3.2rem;
+            margin: 0 0 24px !important;
+            letter-spacing: -0.02em;
+        }
+
+
+        .about-hero p {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Site Header Fixes if not in CSS */
+        .site-header {
+            padding: 15px 0;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 8px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary);
+        }
+
+
+        .mission-section {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .mission-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mission-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .values-section {
+            padding: 100px 0;
+        }
+
+        .values-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateX(5px);
+        }
+
+        .value-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: #818cf8;
+        }
+
+        .value-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .tech-showcase {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .tech-visual {
+            max-width: 800px;
+            margin: 60px auto 0;
+            padding: 40px;
+            background: rgba(99, 102, 241, 0.03);
+            border-radius: 32px;
+            border: 1px dashed rgba(99, 102, 241, 0.2);
+            position: relative;
+        }
+
+        /* Light Mode Overrides */
+        body.light-mode .about-hero {
+            background: radial-gradient(circle at center, rgba(79, 70, 229, 0.05) 0%, transparent 70%);
+        }
+
+        body.light-mode .about-hero h1 {
+            color: #1e293b;
+        }
+
+        body.light-mode .mission-section {
+            background: #f8fafc;
+            border-color: #e2e8f0;
+        }
+
+        body.light-mode .mission-content h2 {
+            background: linear-gradient(to right, #1e293b, #64748b);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        body.light-mode .value-card {
+            background: #fff;
+            border-color: #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .value-card h3 {
+            color: #1e293b;
+        }
+
+        body.light-mode .value-icon {
+            background: rgba(79, 70, 229, 0.1);
+            color: #4f46e5;
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <div id="app">
+        <!-- Header -->
+        <header class="site-header">
+            <nav class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="/assets/s.png" alt="Savra" />
+                    </a>
+                </div>
+
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html" class="active">About Us</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn-ghost">Sign in</a>
+                    <a href="signup.html" class="btn-demo">
+                        <span class="btn-demo-text">Sign Up</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <div class="container">
+                    <h1 class="text-gradient">Owning a business was meant to be the dream.</h1>
+                    <p>But it shouldn't feel like flying blind. For too many founders, that dream is buried under
+                        midnight spreadsheets, cash flow anxiety, and the constant feeling that you're missing the
+                        numbers that matter most.</p>
+                </div>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="mission-section">
+                <div class="container">
+                    <div class="mission-grid">
+                        <div class="mission-content">
+                            <h2>The "Back of the Napkin" Era is Over</h2>
+                            <p>We know the feeling. You're profitable on paper, but your bank account tells a different
+                                story. You're working harder than ever, yet you can't tell which jobs are actually
+                                making you money and which ones are slowly bleeding you dry.</p>
+                            <p>But the numbers are only half the battle. In business, the mistakes are expensive. The
+                                wrong hire doesn't just cost a salary, it costs momentum. The wrong marketing strategy
+                                or
+                                a mismanaged Google ad spend isn't just a "learning curve", it's thousands of dollars of
+                                your hard-earned cash disappearing.</p>
+                            <p>And then there's the vultures. When you're successful, people crawl out of the woodwork
+                                thinking you're "easy money." Vendors, agencies, and "partners" will promise the world
+                                while delivering nothing, assuming you're too busy to notice the leak in your bucket.
+                            </p>
+                            <p><strong>Savra gives you the one thing you can't buy: Certainty</strong></p>
+                            <p>We're turning the "shit" parts of ownership, the manual entry, the guesswork, the
+                                constant
+                                defensive posturing against bad actors, into a streamlined, intelligent advantage. We're
+                                building the proactive brain that watches your blind spots while you reclaim the vision
+                                that started it all.</p>
+                        </div>
+
+                        <div class="values-grid">
+                            <div class="value-card">
+                                <div class="value-icon"><i data-lucide="shield-check"></i></div>
+                                <h3>Radical Transparency</h3>
+                                <p>No black boxes. We show you exactly how institutional-grade logic arrives at every
+                                    insight, so you can make decisions with complete confidence.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon"><i data-lucide="zap"></i></div>
+                                <h3>Proactive Insight</h3>
+                                <p>Savra looks 6 months ahead, identifying cash flow gaps and tax optimizations before
+                                    they
+                                    impact your business.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon"><i data-lucide="lock"></i></div>
+                                <h3>Security First</h3>
+                                <p>Your data is your most valuable asset. We use bank-level encryption to ensure your
+                                    privacy is never compromised.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon"><i data-lucide="mouse-pointer-2"></i></div>
+                                <h3>Strategic Control</h3>
+                                <p>Savra is advisory-only. We provide the institutional-grade intelligence, but you
+                                    remain
+                                    the final bridge between data and decision.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-trust">
+                    <p>Savra is advisory-only. Every recommendation requires explicit human approval. Decisions remain
+                        yours.</p>
+                </div>
+
+                <div class="footer-cta">
+                    <a href="signup.html" class="btn-footer-primary">Book a demo today</a>
+                </div>
+
+                <div class="footer-nav">
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="about.html#security">Security</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="careers.html#contact">Contact</a>
+                </div>
+
+                <div class="footer-trust-block">
+                    <h4>Data & Trust</h4>
+                    <ul>
+                        <li>Customer data is isolated and encrypted</li>
+                        <li>Uploaded documents are used as private reference only</li>
+                        <li>No customer data is used for model training</li>
+                        <li>Savra never auto-executes actions</li>
+                    </ul>
+                </div>
+
+                <div class="footer-legal">
+                    <a href="#privacy">Privacy Policy</a>
+                    <span class="divider">·</span>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

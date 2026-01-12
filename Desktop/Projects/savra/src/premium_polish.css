@@ -1,0 +1,211 @@
+/* premium_polish.css */
+/* "Stripe x Apple" Aesthetic Enhancements */
+
+/* ------------------------------------------------------------------
+   1. ATMOSPHERIC AURA (Background)
+   Deep, slow-moving orbs that create depth.
+   ------------------------------------------------------------------ */
+.atmospheric-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* Covers viewport initially */
+    overflow: hidden;
+    z-index: 0;
+    /* Behind content */
+    pointer-events: none;
+    opacity: 0.15;
+    /* 75% Reduction for Serious Money Look */
+}
+
+.aurora-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    /* Deep blur for "atmosphere" */
+    animation: aurora-float 20s infinite ease-in-out;
+}
+
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0) 70%);
+    /* Indigo */
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0) 70%);
+    /* Violet */
+    top: 20%;
+    right: -100px;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0) 70%);
+    /* Cyan */
+    bottom: -50px;
+    left: 30%;
+    animation-delay: -10s;
+}
+
+@keyframes aurora-float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+}
+
+/* ------------------------------------------------------------------
+   2. LIVING LINES (Radial Map)
+   Pulses of light traveling along the connectors.
+   ------------------------------------------------------------------ */
+.mind-map-svg .map-line {
+    stroke: rgba(255, 255, 255, 0.1);
+    /* Base faint line */
+    stroke-width: 2px;
+    fill: none;
+    stroke-dasharray: 10;
+    /* Length of the "dash" */
+    stroke-dashoffset: 1000;
+    /* Start offset */
+    animation: line-flow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Add a glowing duplicate line on top for the "light pulse" effect */
+.mind-map-svg .map-line.pulse-layer {
+    stroke: #a5b4fc;
+    /* Bright Indigo */
+    stroke-width: 2px;
+    /* Thinner */
+    stroke-dasharray: 100 1000;
+    /* Short dash, huge gap */
+    stroke-linecap: round;
+    /* filter: drop-shadow(0 0 4px #818cf8); REMOVED GLOW */
+    opacity: 0.8;
+    animation: line-pulse 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes line-flow {
+    0% {
+        stroke-dashoffset: 1000;
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0.1;
+    }
+}
+
+@keyframes line-pulse {
+    0% {
+        stroke-dashoffset: 1000;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+    }
+}
+
+/* ------------------------------------------------------------------
+   3. PREMIUM CARD PHYSICS (Hover)
+   ------------------------------------------------------------------ */
+.feature-radial-node {
+    /* Text Contrast Fix for Crystalline Glass */
+    color: #334155;
+    /* Slate-700 for general text */
+
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        border-color 0.4s ease;
+
+    /* Serious Money Look */
+    background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;
+    /* Almost solid */
+    opacity: 0.98;
+
+    backdrop-filter: blur(4px) !important;
+    /* Reduced blur */
+
+    /* Hard, Tight Shadows (Stripe-like) */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06) !important;
+
+    /* Sharper Border */
+    border: 1px solid #cbd5e1 !important;
+    /* Slate-300 */
+    border-radius: 8px !important;
+    /* Tight radius */
+}
+
+.feature-radial-node:hover {
+    transform: translate(-50%, -52%) scale(1.01) !important;
+    /* Smaller lift */
+
+    /* Harder Hover Shadow */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+
+    border-color: #94a3b8 !important;
+    /* Slate-400 */
+    z-index: 50 !important;
+}
+
+/* Contrast Overrides */
+.feature-radial-node .feature-title {
+    color: #0f172a !important;
+    /* Slate-900 (Nearly Black) */
+    font-weight: 600;
+}
+
+.feature-radial-node .feature-description {
+    color: #475569 !important;
+    /* Slate-600 */
+}
+
+.feature-radial-node .feature-icon {
+    color: #4f46e5 !important;
+    /* Indigo-600 for icons */
+}
+
+.feature-radial-node .feature-highlight {
+    color: #4f46e5 !important;
+    border-color: rgba(79, 70, 229, 0.2) !important;
+    background: rgba(79, 70, 229, 0.05);
+}
+
+/* Shimmer overlay REMOVED for serious look */
+.feature-radial-node::after {
+    display: none;
+}
