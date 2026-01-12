@@ -9,7 +9,9 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
+                about: resolve(__dirname, 'about.html'),
                 careers: resolve(__dirname, 'careers.html'),
+                pricing: resolve(__dirname, 'pricing.html'),
                 signup: resolve(__dirname, 'signup.html'),
             },
         },
