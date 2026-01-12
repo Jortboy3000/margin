@@ -103,7 +103,7 @@
         lucide.createIcons();
 
         // Slack Webhook Integration
-        const SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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';
+        const SLACK_WEBHOOK_URL = import.meta.env.VITE_SLACK_WEBHOOK_URL;
 
         document.querySelector('.signup-form').addEventListener('submit', async function (e) {
             e.preventDefault();
